@@ -8,38 +8,71 @@
 
         <?php include("./template/nav.php") ?>
 
-        <main class="relative w-full flex-1 overflow-y-auto scroll-smooth pt-6 pb-20 max-sm:mt-16 sm:pt-8 sm:pb-[7.5rem]">
+        <!-- pullout the data from sql -->
 
-            <div class="w-full flex">
-                <div class="w-full mx-auto xl:max-w-[900px]  space-y-6 max-sm:mt-0 sm:space-y-8 sm:pr-8 sm:pb-8">
-                    <div class="relative">
-                        <div class="-top-8 sticky h-14 w-full bg-neutral-white z-50"></div>
-                        <div data-phase-id="153e7446-5ed5-8195-b877-cbcd67e18dda">
-                            <div style="height: auto; opacity: 1; will-change: auto;">
-                                <div class="mb-6 space-y-6">
-                                    <a href="/courses/d927cdac-7fcb-4516-abab-624af8e44894">
-                                        <div class="flex items-center gap-3 rounded-lg p-1 transition-colors duration-300 hover:bg-neutral-100">
-                                            <div class="inline-flex size-10 shrink-0 items-center justify-center rounded-full border border-neutral-300 bg-neutral-white">
-                                                <img alt="phase" loading="lazy" width="32" height="32" decoding="async" data-nimg="1" src="https://www.hackquest.io/images/project/project-default.png" style="color: transparent;">
-                                            </div>
-                                            <div class="flex flex-col items-start gap-1">
-                                                <span class="body-xs font-semibold text-secondary-neutral">CONCEPT</span>
-                                                <div class="flex gap-3 max-sm:flex-col max-sm:gap-0 sm:items-center">
-                                                    <h3 class="title-5 line-clamp-1" title="Web3 Basics">Web3 Basics</h3>
-                                                </div>
-                                            </div>
-                                            <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="ml-auto size-6 shrink-0 text-secondary-neutral" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="m9 18 6-6-6-6"></path>
+
+
+        <main class="w-full min-h-screen flex-1 overflow-y-auto scroll-smooth max-sm:mt-16 pt-0">
+
+            <div class="p-5 mb-4 mx-auto border-y-0 min-h-screen border xl:w-[900px]">
+                <time class="text-lg font-semibold text-gray-900 dark:text-white">January 13th, 2022</time>
+                <ol class="mt-3 divide-y divide-gray-200 dark:divide-gray-700">
+                    <?php
+
+                    $sql = "SELECT * FROM posts WHERE status = 'approved'";
+                    $query = mysqli_query($con, $sql);
+                    $data = mysqli_fetch_assoc($query);
+
+
+                    ?>
+
+                    <?php while ($data) : ?>
+
+                        <li>
+                            <div class="mb-7 border-b border-b-neutral-300">
+                                <div class="items-center block p-3 sm:flex hover:bg-gray-100 dark:hover:bg-gray-700">
+                                    <img class="w-12 h-12 mb-3 me-3 rounded-full sm:mb-0" src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="Jese Leos image" />
+                                    <div>
+                                        <p class="font-bold text-lg">Aung Aung</p>
+                                    </div>
+                                </div>
+                                <!-- fro post context -->
+                                <div class="pl-[70px]">
+                                    <p>NodeOps 2.0 is Here.
+
+                                        Stage One: Atlas Network → NodeOps Network.
+
+                                        The Atlas Network POC campaign has been such a success that we’re thrilled to announce NodeOps is expanding its offerings to include generalized compute.
+
+                                        Navigators, you’re officially part of the NodeOps
+                                    </p>
+                                    <div class="w-full h-[40px] mt-5 flex items-center justify-between">
+                                        <button>
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
                                             </svg>
-                                        </div>
-                                    </a>
+                                        </button>
+                                        <button>
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 0 1-2.555-.337A5.972 5.972 0 0 1 5.41 20.97a5.969 5.969 0 0 1-.474-.065 4.48 4.48 0 0 0 .978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25Z" />
+                                            </svg>
+                                        </button>
+                                        <button>
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z" />
+                                            </svg>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                    </div>
-                </div>
+                        </li>
+
+                    <?php endwhile; ?>
+                </ol>
             </div>
+
+
 
         </main>
 
@@ -48,6 +81,5 @@
 
 </div>
 
-
-
+<!-- <?php include("./template/newfeedback.php") ?> -->
 <?php include("./template/footer.php") ?>

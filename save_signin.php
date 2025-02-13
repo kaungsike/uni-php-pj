@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 include("./__sql_connection.php");
 
 echo "<pre>";
@@ -16,9 +18,15 @@ $query = mysqli_query($con, $sql);
 
 $student = mysqli_fetch_assoc($query);
 
+print_r($student);
+
 if ($student) {
-    $endPoint = "profile_student.php?id=" . $student['id'];
-    header("location:$endPoint");
+    $_SESSION['id'] = $student['id'];
+    echo "<script>
+    alert('Sign in successfully.');
+    location.href = './profile_student.php';
+</script>";
+exit();
 } else {
     echo "<script>
         alert(`Please check your username and password and try again. If you've forgotten your password, use the 'Forgot Password' link.`);

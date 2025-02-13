@@ -1,4 +1,4 @@
-<aside id="default-sidebar" class="fixed border-r bg-white border-neutral-400 top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
+<aside id="default-sidebar" class="blur-me fixed border-r bg-white border-neutral-400 top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
     <div class="flex w-full items-center justify-end p-3">
         <button data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar" aria-controls="default-sidebar" type="button" class="justify-center w-[40px] h-[40px] border border-neutral-300 rounded-full inline-flex items-center p text-sm text-gray-500 sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
             <span class="sr-only">Open sidebar</span>
@@ -8,7 +8,7 @@
 
         </button>
     </div>
-    <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
+    <div class="blur-me h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
         <ul class="space-y-2 font-medium">
             <li>
                 <div class="flex w-full items-center justify-between px-3 pt-4 pb-4">

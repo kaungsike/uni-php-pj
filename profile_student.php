@@ -2,14 +2,22 @@
 
 <?php
 
+session_start();
+
 include("./__sql_connection.php");
 
-$id = $_GET['id'];
+
+if (!isset($_SESSION['id'])) {
+    header("Location: signin.php");
+    exit();
+}
+
+$id = $_SESSION['id'];
 
 if (!$id) {
     echo "<script>
         alert('Invalid user id.');
-        location.href = './login.php';
+        location.href = './signin.php';
     </script>";
     exit;
 }
@@ -23,7 +31,7 @@ $user = mysqli_fetch_assoc($query);
 if (!$user) {
     echo "<script>
         alert('User not found.');
-        location.href = './login.php';
+        location.href = './signin.php';
     </script>";
     exit;
 }

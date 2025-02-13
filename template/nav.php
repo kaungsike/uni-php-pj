@@ -1,11 +1,19 @@
-<header class="h-16 border-neutral-300 border-b bg-white px-6 max-sm:fixed z-20 max-sm:inset-x-0 max-sm:top-0 max-sm:w-full sm:px-8 flex item-end">
+<header class="h-16 blur-me border-neutral-300 border-b bg-white px-6 max-sm:fixed z-20 max-sm:inset-x-0 max-sm:top-0 max-sm:w-full sm:px-8 flex item-end">
     <button data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar" aria-controls="default-sidebar" type="button" class="inline-flex bg-white items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 z-0">
         <span class="sr-only">Open sidebar</span>
         <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
             <path clip-rule="evenodd" fill-rule="evenodd" d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"></path>
         </svg>
     </button>
-    <div class="ml-auto flex items-center bg-white z-20 borde gap-6 h-full">
+    <div class="ml-auto flex items-center bg-white z-20 gap-8 h-full">
+
+        <button id="openModal">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+            </svg>
+        </button>
+        
+
         <button id="dropdownNotificationButton" data-dropdown-toggle="dropdownNotification" type="button" aria-label="Notification" class="shrink-0 text-neutral-600 outline-none">
             <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="size-5" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
                 <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path>
@@ -57,10 +65,10 @@
                 </div>
             </a>
         </div>
+
         <button id="dropdownUserAvatarButton" data-dropdown-toggle="dropdownAvatar" type="button" class="relative flex size-9 shrink-0 overflow-hidden rounded-full max-sm:size-8 outline-none" aria-label="User Avatar" id="radix-:Re6fhhclfja:" aria-haspopup="menu" aria-expanded="false" data-state="closed">
             <span class="flex aspect-square h-full w-full items-center justify-center bg-neutral-200">K</span>
         </button>
-
         <div id="dropdownAvatar" class="z-10 hidden bg-white divide-y border border-neutral-300 divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-700 dark:divide-gray-600">
             <!-- <div class="px-4 py-3 text-sm text-gray-900 dark:text-white">
                 <div>Bonnie Green</div>
