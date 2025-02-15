@@ -1,6 +1,6 @@
 <?php include("./template/header.php") ?>
 
-<div class=" w-full h-full">
+<div class="w-full h-full">
 
     <?php include("./template/sidebar.php") ?>
 
@@ -10,42 +10,47 @@
 
         <!-- pullout the data from sql -->
 
-
-
         <main class="w-full min-h-screen flex-1 overflow-y-auto scroll-smooth max-sm:mt-16 pt-0">
 
             <div class="p-5 mb-4 mx-auto border-y-0 min-h-screen border xl:w-[900px]">
                 <time class="text-lg font-semibold text-gray-900 dark:text-white">January 13th, 2022</time>
                 <ol class="mt-3 divide-y divide-gray-200 dark:divide-gray-700">
                     <?php
-
                     $sql = "SELECT * FROM posts WHERE status = 'approved'";
                     $query = mysqli_query($con, $sql);
-                    $data = mysqli_fetch_assoc($query);
+
+                    $anonymous_picture_sql = "SELECT * FROM `anonymous_profiles`";
+                    $anonymous_picture_query = mysqli_query($con, $anonymous_picture_sql);
+                    $anonymous_picture_array = mysqli_fetch_assoc($anonymous_picture_query);
+                    $anonymous_picture = $anonymous_picture_array['image_path'];
 
 
+
+                    while ($data = mysqli_fetch_assoc($query)) :
                     ?>
-
-                    <?php while ($data) : ?>
-
                         <li>
                             <div class="mb-7 border-b border-b-neutral-300">
                                 <div class="items-center block p-3 sm:flex hover:bg-gray-100 dark:hover:bg-gray-700">
-                                    <img class="w-12 h-12 mb-3 me-3 rounded-full sm:mb-0" src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="Jese Leos image" />
+                                    <?php
+                                    echo $data['is_anonymous']
+                                        ? "<img class='w-12 border-0.5 border-neutral-300 h-12 mb-3 me-3 rounded-full sm:mb-0' src='$anonymous_picture' alt='User Image'>"
+                                        : "<img class='w-12 h-12 mb-3 me-3 rounded-full sm:mb-0' src='https://flowbite.com/docs/images/people/profile-picture-5.jpg' alt='User Image'>";
+                                    ?>
+
                                     <div>
-                                        <p class="font-bold text-lg">Aung Aung</p>
+                                        <p class="font-bold text-lg"><?php
+                                                                        if ($data['is_anonymous']) {
+                                                                            echo "Anonymous";
+                                                                        } else {
+                                                                            echo "San Gyi Dr Pr"; // You can replace this with the actual name field, e.g., $data['name']
+                                                                        }
+                                                                        ?></p>
+
+                                        </p>
                                     </div>
                                 </div>
-                                <!-- fro post context -->
                                 <div class="pl-[70px]">
-                                    <p>NodeOps 2.0 is Here.
-
-                                        Stage One: Atlas Network → NodeOps Network.
-
-                                        The Atlas Network POC campaign has been such a success that we’re thrilled to announce NodeOps is expanding its offerings to include generalized compute.
-
-                                        Navigators, you’re officially part of the NodeOps
-                                    </p>
+                                    <p><?= nl2br(htmlspecialchars($data['content'] ?? '')) ?></p>
                                     <div class="w-full h-[40px] mt-5 flex items-center justify-between">
                                         <button>
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
@@ -65,21 +70,16 @@
                                     </div>
                                 </div>
                             </div>
-
                         </li>
-
                     <?php endwhile; ?>
                 </ol>
+
             </div>
-
-
 
         </main>
 
     </div>
 
-
 </div>
 
-<!-- <?php include("./template/newfeedback.php") ?> -->
 <?php include("./template/footer.php") ?>
