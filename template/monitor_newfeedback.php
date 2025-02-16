@@ -1,13 +1,13 @@
 <div id="modal" class="blur-me absolute hidden h-full top-0 flex justify-center w-full xl:pl-[256px] xl:pt-[200px]">
     <div class="mx-auto bg-white xl:w-[900px] flex-col h-[500px] items-center z-50 border border-neutral-300 rounded-lg p-6">
-        <form method="post" action="./save_newfeedback.php" class="flex w-full flex-1 flex-col justify-between gap-6">
+        <form method="post" action="./save_monitor_newfeedback.php" class="flex w-full flex-1 flex-col justify-between gap-6">
             <div class="flex items-center justify-between w-full h-[50px]">
                 <div class="flex items-center gap-5">
                     <h1 class="text-2xl font-bold">Post it </h1>
                     <select name="post_as_anonymous" type="button" required class="border border-neutral-300 rounded-lg focus:outline-none">
                         <option value="" selected>Choose one</option>
-                        <option value="`1`">Anonymous</option>
-                        <option value="0"><?= $user_data['name'] ?></option>
+                        <option value="1">Anonymous</option>
+                        <option value='0'><?= $monitor_data['name'] ?></option>
                     </select>
 
                 </div>

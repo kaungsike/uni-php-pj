@@ -14,12 +14,12 @@
 
             <div class="w-full">
                 <div class="flex mx-auto items-center xl:w-[880px] mb-10 mt-5 rounded-3xl border border-neutral-200 bg-neutral-100 p-6 sm:gap-4">
-                    <p class="text-2xl font-bold">Pending Posts Manage Panel</p>
+                    <p class="text-2xl font-bold">Approved Posts Manage Panel</p>
                 </div>
 
                 <?php
 
-                $pending_post_sql = "SELECT posts.*, users.name AS student_name, users.profile_photo as student_profile_photo FROM posts INNER JOIN users ON posts.student_id = users.id WHERE posts.status = 'pending'";
+                $pending_post_sql = "SELECT posts.*, users.name AS student_name, users.profile_photo as student_profile_photo FROM posts INNER JOIN users ON posts.student_id = users.id WHERE posts.status = 'refused'";
                 $pending_post_query = mysqli_query($con, $pending_post_sql);
 
                 ?>
@@ -45,7 +45,7 @@
                                             <div>
                                                 <p class="font-bold text-lg">
                                                     <?php
-                                                    if ($pending_post['is_anonymous']=="1") {
+                                                    if ($pending_post['is_anonymous']) {
                                                         echo "Anonymous";
                                                     } else {
                                                         echo $pending_post['student_name'];
@@ -57,19 +57,15 @@
                                             </div>
                                             <div class="flex items-center gap-3">
                                                 <button post_id='<?= $pending_post['id'] ?>' class="flex items-center gap-2 justify-center font-bold transition active:scale-95 focus:outline-none disabled:cursor-not-allowed px-4 py-3 text-sm border bg-neutral-50 border-neutral-600 hover:bg-neutral-200 disabled:border-neutral-300 disabled:text-neutral-400 h-8 rounded-md sm:h-9 sm:rounded-lg text-red-500">
-                                                    Refuse
-                                                </button>
-                                                <button post_id='<?= $pending_post['id'] ?>' class="flex items-center gap-2 justify-center font-bold transition active:scale-95 focus:outline-none disabled:cursor-not-allowed px-4 py-3 text-sm border bg-neutral-50 text-green-700 border-neutral-600 hover:bg-neutral-200 disabled:border-neutral-300 disabled:text-neutral-400 h-8 rounded-md sm:h-9 sm:rounded-lg">
-                                                    Approve
+                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+                                                    </svg>Refused
                                                 </button>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="pl-[70px] mb-5">
-                                        <?php
-                                            $content = preg_replace('/\s{2,}/','<br>',$pending_post['content'])
-                                        ?>
-                                        <p><?=$content ?></p>
+                                        <p>This is another approved post.</p>
                                     </div>
                                 </div>
                             </li>
@@ -85,4 +81,4 @@
 
 </div>
 
-<?php include("./template/monitor_footer.php") ?>
+<?php include("./template/footer.php") ?>

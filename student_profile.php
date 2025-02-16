@@ -1,15 +1,16 @@
-<?php include("./template/header.php") ?>
+
+<?php include("./template/student_header.php") ?>
 
 <?php
 
 
-if (!isset($_SESSION['id'])) {
+if (!isset($_SESSION['student_id'])) {
     header("Location: signin.php");
     exit();
 }
 
 
-if (!$id) {
+if (!$student_id) {
     echo "<script>
         alert('Invalid user id.');
         location.href = './signin.php';
@@ -18,7 +19,7 @@ if (!$id) {
 }
 
 
-if (!$user_data) {
+if (!$student_data) {
     echo "<script>
         alert('User not found.');
         location.href = './signin.php';
@@ -29,15 +30,15 @@ if (!$user_data) {
 
 ?>
 
-<?php include("./template/header.php") ?>
+
 
 <div class=" w-full h-full">
 
-    <?php include("./template/sidebar.php") ?>
+    <?php include("./template/student_sidebar.php") ?>
 
     <div class="sm:ml-64">
 
-        <?php include("./template/nav.php") ?>
+        <?php include("./template/student_nav.php") ?>
 
         <main class="relative w-full flex-1 overflow-y-auto scroll-smooth pt-6 pb-20 max-sm:mt-16 sm:pt-8 sm:pb-[7.5rem]">
             <div class="-mt-8 h-full relative w-full space-y-8 items-center flex flex-col">
@@ -53,11 +54,11 @@ if (!$user_data) {
                 </div>
                 <div class=" absolute xl:top-[105px] flex items-end gap-6 px-10 justify-start xl:w-[1045px] w-full xl:h-[155px]">
                     <div class="overflow-hidden border-[4px] border-neutral-200 h-full w-[155px] rounded-full">
-                        <img src="https://i.pinimg.com/736x/58/7b/57/587b57f888b1cdcc0e895cbdcfde1c1e.jpg" alt="">
+                        <img src="<?=$student_data['profile_photo'] ?>" alt="">
                     </div>
                     <div class="flex flex-col">
-                        <p class="text-4xl font-bold"><?=$user_data['name'] ?></p>
-                        <p class="text-neutral-500"><?=$user_data['student_id'] ?></p>
+                        <p class="text-4xl font-bold"><?=$student_data['name'] ?></p>
+                        <p class="text-neutral-500"><?=$student_data['student_id'] ?></p>
                     </div>
                 </div>
                 <div class="pb-16 sm:flex pt-[80px] xl:w-[1070px] sm:justify-center mx-auto">
@@ -128,4 +129,4 @@ if (!$user_data) {
 </div>
 
 
-<?php include("./template/footer.php") ?>
+<?php include("./template/student_footer.php") ?>

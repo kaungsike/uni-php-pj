@@ -28,12 +28,13 @@
                 </a>
             </li>
             <li>
-                <a href="./monitor_manage_pending_post.php">
+                <a href="./monitor_manage_approved_post.php">
                     <div data-active="false" class="flex cursor-pointer items-center gap-1 rounded-lg border border-transparent px-3 py-1 text-neutral-600 text-sm leading-[150%] transition-all duration-300 hover:border-neutral-200 hover:bg-neutral-100 data-[active=true]:bg-neutral-100 data-[active=true]:font-extrabold data-[active=true]:text-primary-neutral" style="padding-left:8px">
                         <span class="relative h-6 w-6 flex-shrink-0 flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5" />
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z" />
                             </svg>
+
 
                         </span>
                         <span class="whitespace-nowrap">Approved Posts</span>
@@ -41,14 +42,17 @@
                 </a>
             </li>
             <li>
-                <a href="./monitor_manage_pending_post.php">
+                <a href="./monitor_manage_rejected_post.php">
                     <div data-active="false" class="flex cursor-pointer items-center gap-1 rounded-lg border border-transparent px-3 py-1 text-neutral-600 text-sm leading-[150%] transition-all duration-300 hover:border-neutral-200 hover:bg-neutral-100 data-[active=true]:bg-neutral-100 data-[active=true]:font-extrabold data-[active=true]:text-primary-neutral" style="padding-left:8px">
                         <span class="relative h-6 w-6 flex-shrink-0 flex items-center">
-                        <lottie-player src="path/to/your/animation.json" background="transparent" speed="1" loop autoplay></lottie-player>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                            </svg>
+
 
 
                         </span>
-                        <span class="whitespace-nowrap">Rejected Posts</span>
+                        <span class="whitespace-nowrap">Refused Posts</span>
                     </div>
                 </a>
             </li>

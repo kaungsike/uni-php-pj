@@ -33,7 +33,7 @@ if ($data) {
 }
 
 // add new student
-$sql_add_new_user = "INSERT INTO students (student_id, name, email, password) 
+$sql_add_new_user = "INSERT INTO users (student_id, name, email, password) 
 VALUES ('$student_id', '$name', '$email', '$password');
 ";
 

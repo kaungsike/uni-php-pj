@@ -1,12 +1,12 @@
-<?php include("./template/header.php") ?>
+<?php include("./template/student_header.php") ?>
 
 <div class="w-full h-full">
 
-    <?php include("./template/sidebar.php") ?>
+    <?php include("./template/student_sidebar.php") ?>
 
     <div class="sm:ml-64">
 
-        <?php include("./template/nav.php") ?>
+        <?php include("./template/student_nav.php") ?>
 
         <!-- pullout the data from sql -->
 
@@ -16,15 +16,8 @@
                 <time class="text-lg font-semibold text-gray-900 dark:text-white">January 13th, 2022</time>
                 <ol class="mt-3 divide-y divide-gray-200 dark:divide-gray-700">
                     <?php
-                    $sql = "SELECT * FROM posts WHERE status = 'approved'";
+                    $sql = "SELECT posts.*, users.name AS student_name, users.profile_photo as student_profile_photo FROM posts INNER JOIN users ON posts.student_id = users.id WHERE posts.status = 'approved'";
                     $query = mysqli_query($con, $sql);
-
-                    $anonymous_picture_sql = "SELECT * FROM `anonymous_profiles`";
-                    $anonymous_picture_query = mysqli_query($con, $anonymous_picture_sql);
-                    $anonymous_picture_array = mysqli_fetch_assoc($anonymous_picture_query);
-                    $anonymous_picture = $anonymous_picture_array['image_path'];
-
-
 
                     while ($data = mysqli_fetch_assoc($query)) :
                     ?>
@@ -32,21 +25,31 @@
                             <div class="mb-7 border-b border-b-neutral-300">
                                 <div class="items-center block p-3 sm:flex hover:bg-gray-100 dark:hover:bg-gray-700">
                                     <?php
-                                    echo $data['is_anonymous']
-                                        ? "<img class='w-12 border-0.5 border-neutral-300 h-12 mb-3 me-3 rounded-full sm:mb-0' src='$anonymous_picture' alt='User Image'>"
-                                        : "<img class='w-12 h-12 mb-3 me-3 rounded-full sm:mb-0' src='https://flowbite.com/docs/images/people/profile-picture-5.jpg' alt='User Image'>";
+
+                                    if ($data['is_anonymous'] == "1") {
+                                    ?>
+                                        <img class="w-12 border-0.5 border-neutral-300 h-12 mb-3 me-3 rounded-full sm:mb-0" src="https://cdn.vectorstock.com/i/500p/22/45/user-icon-profile-line-isolated-on-white-vector-50642245.jpg" alt="">
+                                    <?php
+                                    } else {
+                                    ?>
+                                        <img class="w-12 border-0.5 border-neutral-300 h-12 mb-3 me-3 rounded-full sm:mb-0" src="<?=$data['student_profile_photo'] ?>" alt="">
+
+                                    <?php
+                                    }
                                     ?>
 
                                     <div>
-                                        <p class="font-bold text-lg"><?php
-                                                                        if ($data['is_anonymous']) {
-                                                                            echo "Anonymous";
-                                                                        } else {
-                                                                            echo "San Gyi Dr Pr"; // You can replace this with the actual name field, e.g., $data['name']
-                                                                        }
-                                                                        ?></p>
-
+                                        <p class="font-bold text-lg">
+                                            <?php
+                                            if ($data['is_anonymous']) {
+                                                echo "Anonymous";
+                                            } else {
+                                                echo $data['student_name']; // You can replace this with the actual name field, e.g., $data['name']
+                                            }
+                                            ?>
                                         </p>
+
+
                                     </div>
                                 </div>
                                 <div class="pl-[70px]">
@@ -82,4 +85,4 @@
 
 </div>
 
-<?php include("./template/footer.php") ?>
+<?php include("./template/student_footer.php") ?>

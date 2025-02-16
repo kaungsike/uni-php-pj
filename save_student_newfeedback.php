@@ -3,7 +3,7 @@
 session_start();
 
 include("./__sql_connection.php");
-include("./user_data.php");
+include("./student_data.php");
 
 echo "<pre>";
 
@@ -11,11 +11,12 @@ print_r($_POST);
 
 
 $context = $_POST['context'];
-$post_as_anonymous = $_POST['context'];
-$student_id = $user_data['id'];
+$post_as_anonymous =(int) $_POST['post_as_anonymous'];
+$student_id = $student_data['id'];
+
 
 $sql_create_new_post = "INSERT INTO posts (student_id, content,is_anonymous, status) 
-VALUES ($student_id,'$context',1, 'pending')";
+VALUES ($student_id,'$context',$post_as_anonymous, 'pending')";
 
 
 mysqli_begin_transaction($con);

@@ -1,6 +1,6 @@
 <?php
 
-if ($id) {
+if ($monitor_id) {
 
 ?>
 

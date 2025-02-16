@@ -14,12 +14,12 @@
 
             <div class="w-full">
                 <div class="flex mx-auto items-center xl:w-[880px] mb-10 mt-5 rounded-3xl border border-neutral-200 bg-neutral-100 p-6 sm:gap-4">
-                    <p class="text-2xl font-bold">Pending Posts Manage Panel</p>
+                    <p class="text-2xl font-bold">Approved Posts Manage Panel</p>
                 </div>
 
                 <?php
 
-                $pending_post_sql = "SELECT posts.*, users.name AS student_name, users.profile_photo as student_profile_photo FROM posts INNER JOIN users ON posts.student_id = users.id WHERE posts.status = 'pending'";
+                $pending_post_sql = "SELECT posts.*, users.name AS student_name, users.profile_photo as student_profile_photo FROM posts INNER JOIN users ON posts.student_id = users.id WHERE posts.status = 'approved'";
                 $pending_post_query = mysqli_query($con, $pending_post_sql);
 
                 ?>
@@ -45,7 +45,7 @@
                                             <div>
                                                 <p class="font-bold text-lg">
                                                     <?php
-                                                    if ($pending_post['is_anonymous']=="1") {
+                                                    if ($pending_post['is_anonymous']) {
                                                         echo "Anonymous";
                                                     } else {
                                                         echo $pending_post['student_name'];
@@ -56,20 +56,16 @@
                                                 <p class="text-sm text-neutral-500">12hrs ago</p>
                                             </div>
                                             <div class="flex items-center gap-3">
-                                                <button post_id='<?= $pending_post['id'] ?>' class="flex items-center gap-2 justify-center font-bold transition active:scale-95 focus:outline-none disabled:cursor-not-allowed px-4 py-3 text-sm border bg-neutral-50 border-neutral-600 hover:bg-neutral-200 disabled:border-neutral-300 disabled:text-neutral-400 h-8 rounded-md sm:h-9 sm:rounded-lg text-red-500">
-                                                    Refuse
-                                                </button>
                                                 <button post_id='<?= $pending_post['id'] ?>' class="flex items-center gap-2 justify-center font-bold transition active:scale-95 focus:outline-none disabled:cursor-not-allowed px-4 py-3 text-sm border bg-neutral-50 text-green-700 border-neutral-600 hover:bg-neutral-200 disabled:border-neutral-300 disabled:text-neutral-400 h-8 rounded-md sm:h-9 sm:rounded-lg">
-                                                    Approve
+                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z"></path>
+                                                    </svg>Approved
                                                 </button>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="pl-[70px] mb-5">
-                                        <?php
-                                            $content = preg_replace('/\s{2,}/','<br>',$pending_post['content'])
-                                        ?>
-                                        <p><?=$content ?></p>
+                                        <p>This is another approved post.</p>
                                     </div>
                                 </div>
                             </li>
@@ -85,4 +81,4 @@
 
 </div>
 
-<?php include("./template/monitor_footer.php") ?>
+<?php include("./template/footer.php") ?>

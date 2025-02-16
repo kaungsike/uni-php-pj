@@ -6,9 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./src/output.css">
-    <!-- <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script> -->
 </head>
 
 <body id="body">
 
 <?php include("./__sql_connection.php"); ?>
+
+<?php include("./student_data.php"); ?>
+
