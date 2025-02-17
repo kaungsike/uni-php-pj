@@ -1,12 +1,12 @@
-<?php include("./template/header.php") ?>
+<?php include("./template/student_header.php") ?>
 
 <div class=" w-full h-full">
 
-    <?php include("./template/sidebar.php") ?>
+    <?php include("./template/student_sidebar.php") ?>
 
     <div class="sm:ml-64">
 
-    <?php include("./template/nav.php") ?>
+    <?php include("./template/student_nav.php") ?>
 
         <main class="w-full flex items-center">
             <div class="group sm:container mx-auto max-w-[1150px]">

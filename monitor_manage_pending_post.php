@@ -8,8 +8,6 @@
 
         <?php include("./template/monitor_nav.php") ?>
 
-        <!-- pullout the data from sql -->
-
         <main class="w-full min-h-screen flex-1 overflow-y-auto scroll-smooth max-sm:mt-16 pt-0">
 
             <div class="w-full">
@@ -25,7 +23,7 @@
                 ?>
 
                 <div class="mx-auto xl:w-[880px] border border-neutral-300 rounded-lg p-4">
-                    <ol class="mt-3 divide-y divide-gray-200 dark:divide-gray-700">
+                    <ol id="post_group" class="mt-3 divide-y divide-gray-200 dark:divide-gray-700">
                         <?php while ($pending_post = mysqli_fetch_assoc($pending_post_query)) : ?>
                             <li>
                                 <div class="mb-7 border-b border-b-neutral-300">
@@ -56,10 +54,10 @@
                                                 <p class="text-sm text-neutral-500">12hrs ago</p>
                                             </div>
                                             <div class="flex items-center gap-3">
-                                                <button post_id='<?= $pending_post['id'] ?>' class="flex items-center gap-2 justify-center font-bold transition active:scale-95 focus:outline-none disabled:cursor-not-allowed px-4 py-3 text-sm border bg-neutral-50 border-neutral-600 hover:bg-neutral-200 disabled:border-neutral-300 disabled:text-neutral-400 h-8 rounded-md sm:h-9 sm:rounded-lg text-red-500">
+                                                <button id="refuse_btn" post_id='<?= $pending_post['id'] ?>' class="flex items-center gap-2 justify-center font-bold transition active:scale-95 focus:outline-none disabled:cursor-not-allowed px-4 py-3 text-sm border bg-neutral-50 border-neutral-600 hover:bg-neutral-200 disabled:border-neutral-300 disabled:text-neutral-400 h-8 rounded-md sm:h-9 sm:rounded-lg text-red-500">
                                                     Refuse
                                                 </button>
-                                                <button post_id='<?= $pending_post['id'] ?>' class="flex items-center gap-2 justify-center font-bold transition active:scale-95 focus:outline-none disabled:cursor-not-allowed px-4 py-3 text-sm border bg-neutral-50 text-green-700 border-neutral-600 hover:bg-neutral-200 disabled:border-neutral-300 disabled:text-neutral-400 h-8 rounded-md sm:h-9 sm:rounded-lg">
+                                                <button id="approve_btn" post_id='<?= $pending_post['id'] ?>' class="flex items-center gap-2 justify-center font-bold transition active:scale-95 focus:outline-none disabled:cursor-not-allowed px-4 py-3 text-sm border bg-neutral-50 text-green-700 border-neutral-600 hover:bg-neutral-200 disabled:border-neutral-300 disabled:text-neutral-400 h-8 rounded-md sm:h-9 sm:rounded-lg">
                                                     Approve
                                                 </button>
                                             </div>
