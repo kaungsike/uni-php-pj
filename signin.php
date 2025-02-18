@@ -12,7 +12,8 @@
                     Sign in
                 </h1>
 
-                <form action="save_signin.php" method="POST" class="space-y-4">
+                <form id="signin_form" method="POST" class="space-y-4">
+                <!-- <form action="save_signin.php" method="POST" class="space-y-4"> -->
 
                     <div class="space-y-1 w-full text-left">
                         <div class="flex items-center justify-start gap-2"><label class="peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-neutral-600 text-sm leading-[150%]" for=":rt:-form-item">Email</label></div>
@@ -33,7 +34,7 @@
                         </div>
                     </div>
 
-                    <button class="w-full py-3 flex mt-5 justify-center bg-neutral-300 rounded-lg">
+                    <button id="signin_btn" class="w-full py-3 flex mt-5 justify-center bg-neutral-300 rounded-lg">
                         Sign in
                     </button>
                 </form>

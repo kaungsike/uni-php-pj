@@ -65,7 +65,10 @@
                                         </div>
                                     </div>
                                     <div class="pl-[70px] mb-5">
-                                        <p>This is another approved post.</p>
+                                        <?php
+                                        $content = preg_replace('/\s{2,}/', '<br>', $pending_post['content'])
+                                        ?>
+                                        <p><?= $content ?></p>
                                     </div>
                                 </div>
                             </li>

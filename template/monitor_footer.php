@@ -1,4 +1,5 @@
-<?php include("./template/monitor_newfeedback.php") ?>
+
+</body>
 
 <script>
   const openModalButton = document.getElementById("openModal");
@@ -32,8 +33,6 @@
     }
   });
 </script>
-
-</body>
 
 <script type="module" src="./main.js"></script>
 

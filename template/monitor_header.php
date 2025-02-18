@@ -14,3 +14,5 @@
 
 <?php include("./monitor_data.php"); ?>
 
+<?php include("./template/monitor_newfeedback.php") ?>
+
