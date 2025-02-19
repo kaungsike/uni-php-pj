@@ -1,6 +1,6 @@
 <div id="modal" class="blur-me absolute hidden h-full top-0 flex justify-center w-full xl:pl-[256px] xl:pt-[200px]">
     <div class="mx-auto bg-white xl:w-[900px] flex-col h-[500px] items-center z-50 border border-neutral-300 rounded-lg p-6">
-        <form id="new_feedback_form" method="POST" class="flex w-full flex-1 flex-col justify-between gap-6">
+        <form id="monitor_new_feedback_form" method="POST" class="flex w-full flex-1 flex-col justify-between gap-6">
             <div class="flex items-center justify-between w-full h-[50px]">
                 <div class="flex items-center gap-5">
                     <h1 class="text-2xl font-bold">Post it </h1>
@@ -41,7 +41,7 @@
 
 
             <div class="flex flex-col items-center gap-4 sm:mt-auto sm:flex-row sm:justify-end">
-                <button id="new_feedback_btn" class="border border-neutral-300 px-6 py-3 rounded-md hover:bg-neutral-200 hover:border-neutral-700 duration-150" type="submit">
+                <button id="monitor_new_feedback_btn" class="border border-neutral-300 px-6 py-3 rounded-md hover:bg-neutral-200 hover:border-neutral-700 duration-150" type="submit">
                     <span class="inline-flex items-center gap-2 whitespace-nowrap">
                         Post
                         <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 20 20" aria-hidden="true" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">

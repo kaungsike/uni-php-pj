@@ -1,45 +1,49 @@
 <?php
 
-session_start();
-
 include("./__sql_connection.php");
 include("./student_data.php");
 
-echo "<pre>";
+header('Content-Type: text/plain');
 
-print_r($_POST);
+$data = json_decode(file_get_contents("php://input"), true);
 
-
-$context = $_POST['context'];
-$post_as_anonymous =(int) $_POST['post_as_anonymous'];
 $student_id = $student_data['id'];
 
+if (isset($data['post_as_anonymous']) && isset($data['context'])) {
 
-$sql_create_new_post = "INSERT INTO posts (student_id, content,is_anonymous, status) 
-VALUES ($student_id,'$context',$post_as_anonymous, 'pending')";
+    sleep(3);
 
+    $is_anonymous = $data['post_as_anonymous'];
+    $context = $data['context'];
 
-mysqli_begin_transaction($con);
+    $create_new_post_sql = "INSERT INTO posts (student_id, content,is_anonymous,status) 
+VALUES ($student_id,'$context',$is_anonymous, 'pending')";
 
-try {
+    mysqli_begin_transaction($con);
 
-    if (!mysqli_query($con, $sql_create_new_post)) {
-        throw new Exception("Failed to create new post : " . mysqli_error($con));
+    try {
+
+        if (!mysqli_query($con, $create_new_post_sql)) {
+            throw new Exception("Failed to create new post : " . mysqli_error($con));
+        }
+
+        mysqli_commit($con);
+
+        echo json_encode(true);
+
+        exit;
+
+    } catch (Exception $e) {
+
+        mysqli_rollback($con);
+
+        echo json_encode(false);
+
+        exit;
     }
 
-    mysqli_commit($con);
-
-    echo "<script>
-        alert('New post created successfully.');
-        location.href = './explore.php';
-    </script>";
-
-} catch (Exception $e) {
-
-    mysqli_rollback($con);
-
-    echo "<script>
-        alert('Failed to create post: " . $e->getMessage() . "');
-        location.href = './explore.php';
-    </script>";
+} else {
+    echo json_encode(["success" => true, "don't receive data" => "it don't work i think"]);
 }
+
+exit;

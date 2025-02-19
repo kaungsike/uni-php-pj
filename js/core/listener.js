@@ -1,4 +1,5 @@
-import { approve_btn, new_feedback_form, refuse_btn, signin_btn, signin_form } from "./selectors.js";
+// import toastify from "toastify-js.";
+import { approve_btn, closeModal_btn, monitor_new_feedback_form, refuse_btn, signin_form, student_new_feedback_form } from "./selectors.js";
 
 const listener = () => {
     approve_btn.forEach((btn) => {
@@ -82,73 +83,73 @@ const listener = () => {
         });
     });
 
-    if(signin_form){
+    if (signin_form) {
         signin_form.addEventListener("submit", async (e) => {
             e.preventDefault();
-    
+
             const button = e.target.querySelector("#signin_btn");
-    
+
             const formData = new FormData(signin_form)
             const email = formData.get("email");
             const password = formData.get("password");
-    
+
             console.log("info requesting... ", email, password);
-    
+
             button.textContent = `Signing...`;
             button.disabled = true;
-    
+
             try {
-    
+
                 const response = await fetch("./save_signin.php", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ email: email, password: password })
-    
+
                 })
-    
-                const data = await response.json(); 
-    
+
+                const data = await response.json();
+
                 console.log("PHP Response:", data);
-    
+
                 if (data) {
-                    if(data=="student"){
+                    if (data == "student") {
                         location.href = "./student_profile.php";
                         return;
                     }
-    
-                    if(data=="monitor"){
+
+                    if (data == "monitor") {
                         location.href = "./monitor_profile.php";
                         return;
                     }
-    
+
                     return;
-    
+
                 } else {
                     button.textContent = "Error! Try again";
                     button.disabled = false;
                 }
-    
-    
-    
+
+
+
             } catch (error) {
                 console.error("Try fail..", error);
             }
-    
-    
-    
-    
+
+
+
+
         })
     }
 
-    new_feedback_form.addEventListener("submit", async (e) => {
+    monitor_new_feedback_form && monitor_new_feedback_form.addEventListener("submit", async (e) => {
         e.preventDefault();
         console.log("submit");
 
-        const button = e.target.querySelector("#new_feedback_btn");
+        const button = e.target.querySelector("#monitor_new_feedback_btn");
 
         console.log(button);
 
-        const formData = new FormData(new_feedback_form)
+        const formData = new FormData(monitor_new_feedback_form)
         const post_as_anonymous = formData.get("post_as_anonymous");
         const context = formData.get("context");
 
@@ -166,14 +167,15 @@ const listener = () => {
 
             })
 
-            const data = await response.json(); 
+            const data = await response.json();
 
             console.log("PHP Response:", data);
 
             if (data) {
-        button.textContent = `Posted`;
-        button.disabled = false;
-        
+                button.textContent = `Posted`;
+                button.disabled = false;
+                closeModal_btn.click();
+
 
             } else {
                 button.textContent = "Error! Try again";
@@ -190,6 +192,58 @@ const listener = () => {
 
 
     })
+
+    student_new_feedback_form && student_new_feedback_form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        console.log("submit");
+
+        const button = e.target.querySelector("#student_new_feedback_btn");
+
+        const formData = new FormData(student_new_feedback_form)
+        const post_as_anonymous = formData.get("post_as_anonymous");
+        const context = formData.get("context");
+
+        console.log("info requesting... ", post_as_anonymous, context);
+
+        button.textContent = `Posting...`;
+        button.disabled = true;
+
+        try {
+
+            const response = await fetch("./save_student_newfeedback.php", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ post_as_anonymous: post_as_anonymous, context: context })
+
+            })
+
+            const data = await response.json();
+
+            console.log("PHP Response:", data);
+
+            if (data) {
+                button.textContent = `Posted`;
+                button.disabled = false;
+                closeModal_btn.click();
+
+
+            } else {
+                button.textContent = "Error! Try again";
+                button.disabled = false;
+            }
+
+
+
+        } catch (error) {
+            console.error("Try fail..", error);
+        }
+
+
+
+
+    })
+
+    
 };
 
 export default listener;

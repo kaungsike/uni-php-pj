@@ -2,3 +2,4 @@
 @tailwind components;
 @tailwind utilities;
 @source "../node_modules/flowbite";
+@import "toastify-js/src/toastify.css"
