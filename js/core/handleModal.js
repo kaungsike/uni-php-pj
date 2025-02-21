@@ -1,4 +1,4 @@
-import { blurElements, closeModal_btn, modal, openModal_btn } from "./selectors.js";
+import { blurElements, closeModal_btn, modal, monitor_like_btn_group, openModal_btn } from "./selectors.js";
 
 const handleModal = () => {
     openModal_btn.addEventListener("click",() => {
@@ -28,6 +28,7 @@ const handleModal = () => {
           });
         }
       });
+
 }
 
 export default handleModal;
