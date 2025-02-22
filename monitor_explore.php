@@ -23,16 +23,16 @@
                     ?>
                         <li>
                             <div class="mb-7 border-b border-b-neutral-300">
-                                <div class="items-center block p-3 sm:flex hover:bg-gray-100 dark:hover:bg-gray-700">
+                                <div class="items-center mb-2 mt-2 xl:p-3 sm:flex flex hover:bg-gray-100 gap-2 dark:hover:bg-gray-700">
                                     <?php
 
                                     if ($data['is_anonymous'] == "1") {
                                     ?>
-                                        <img class="w-12 border-0.5 border-neutral-300 h-12 mb-3 me-3 rounded-full sm:mb-0" src="https://cdn.vectorstock.com/i/500p/22/45/user-icon-profile-line-isolated-on-white-vector-50642245.jpg" alt="">
+                                        <img class="xl:w-12 w-10 border-0.5 border-neutral-300 h-12 rounded-full sm:mb-0" src="https://cdn.vectorstock.com/i/500p/22/45/user-icon-profile-line-isolated-on-white-vector-50642245.jpg" alt="">
                                     <?php
                                     } else {
                                     ?>
-                                        <img class="w-12 border-0.5 border-neutral-300 h-12 mb-3 me-3 rounded-full sm:mb-0" src="<?= $data['user_profile_photo'] ?>" alt="">
+                                        <img class="w-12 border-0.5 border-neutral-300 h-12 rounded-full sm:mb-0" src="<?= $data['user_profile_photo'] ?>" alt="">
 
                                     <?php
                                     }
@@ -52,9 +52,9 @@
 
                                     </div>
                                 </div>
-                                <div class="px-[70px]">
+                                <div class="xl:px-[70px]">
                                     <p><?= nl2br(htmlspecialchars($data['content'] ?? '')) ?></p>
-                                    <div id="monitor_like_btn_group" class="w-full h-[40px] mt-5 flex items-center justify-between">
+                                    <div id="monitor_like_btn_group" class="w-full h-[40px] xl:mt-5 flex items-center justify-between">
                                         <?php
 
                                         $user_id = $data['user_id'];

@@ -1,5 +1,7 @@
+import { student_like_btn } from "./selectors.js";
+
 const handleStudent = () => {
-    stud && monitor_like_btn.forEach((btn) => {
+    student_like_btn && student_like_btn.forEach((btn) => {
 
         btn.addEventListener("click", async (e) => {
 
@@ -14,7 +16,7 @@ const handleStudent = () => {
             if (is_like == '1') {
                 console.log("Already Liked");
                 try {
-                    const response = await fetch("./save_monitor_like.php", {
+                    const response = await fetch("./save_student_like.php", {
                         method: "POST",
                         headers: { "Content-Type": "application/json" },
                         body: JSON.stringify({
@@ -46,7 +48,7 @@ const handleStudent = () => {
             } else {
                 console.log("Not like yet");
                 try {
-                    const response = await fetch("./save_monitor_like.php", {
+                    const response = await fetch("./save_student_like.php", {
                         method: "POST",
                         headers: { "Content-Type": "application/json" },
                         body: JSON.stringify({

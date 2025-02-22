@@ -3,13 +3,13 @@
 session_start();
 
 include("./__sql_connection.php");
-include("./monitor_data.php");
+include("./student_data.php");
 
 header('Content-Type: text/plain');
 
 $data = json_decode(file_get_contents("php://input"), true);
 
-$monitor_id = $monitor_data['id'];
+$student_id= $student_data['id'];
 
 if ($data['is_like']) {
 
@@ -18,7 +18,7 @@ if ($data['is_like']) {
         $post_id = $data['post_id'];
         $is_like = $data['is_like'];
 
-        $unlike_sql = "DELETE FROM likes WHERE likes.post_id = $post_id and likes.user_id=$monitor_id";
+        $unlike_sql = "DELETE FROM likes WHERE likes.post_id = $post_id and likes.user_id=$student_id";
 
         mysqli_begin_transaction($con);
 
@@ -33,7 +33,7 @@ if ($data['is_like']) {
             $updated_sql = "SELECT COUNT(*) AS like_count, GROUP_CONCAT(user_id) AS liked_users FROM likes WHERE post_id = $post_id";
             $updated_query = mysqli_query($con, $updated_sql);
             $updated_data = mysqli_fetch_assoc($updated_query);
-            $updated_data['id'] = $monitor_id;
+            $updated_data['id'] = $student_id;
 
             echo json_encode($updated_data);
 
@@ -56,7 +56,7 @@ if ($data['is_like']) {
         $post_id = $data['post_id'];
         $is_like = $data['is_like'];
 
-        $unlike_sql = "INSERT INTO likes (id, user_id, post_id, created_at) VALUES (NULL, '$monitor_id', '$post_id', CURRENT_TIMESTAMP);";
+        $unlike_sql = "INSERT INTO likes (id, user_id, post_id, created_at) VALUES (NULL, '$student_id', '$post_id', CURRENT_TIMESTAMP);";
 
         mysqli_begin_transaction($con);
 
@@ -71,7 +71,7 @@ if ($data['is_like']) {
             $updated_sql = "SELECT COUNT(*) AS like_count, GROUP_CONCAT(user_id) AS liked_users FROM likes WHERE post_id = $post_id";
             $updated_query = mysqli_query($con, $updated_sql);
             $updated_data = mysqli_fetch_assoc($updated_query);
-            $updated_data['id'] = $monitor_id;
+            $updated_data['id'] = $student_id;
 
             echo json_encode($updated_data);
 

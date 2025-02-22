@@ -21,4 +21,5 @@ export const blurElements = document.querySelectorAll(".blur-me");
 // monitors
 export const monitor_like_btn_group = document.querySelectorAll("#monitor_like_btn_group");
 export const monitor_like_btn = document.querySelectorAll("#monitor_like_btn");
+export const student_like_btn = document.querySelectorAll("#student_like_btn");
 

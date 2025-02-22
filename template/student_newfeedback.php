@@ -41,7 +41,7 @@
 
 
             <div class="flex flex-col items-center gap-4 sm:mt-auto sm:flex-row sm:justify-end">
-                <button id="student_new_feedback_btn" class="border border-neutral-300 px-6 py-3 rounded-md hover:bg-neutral-200 hover:border-neutral-700 duration-150" type="submit">
+                <button id="student_new_feedback_btn" class="border border-neutral-300 flex items-center justify-center xl:w-[120px] py-2 rounded-md hover:bg-neutral-200 hover:border-neutral-700 duration-150" type="submit">
                     <span class="inline-flex items-center gap-2 whitespace-nowrap">
                         Post
                         <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 20 20" aria-hidden="true" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">

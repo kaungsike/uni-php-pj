@@ -16,7 +16,7 @@ if (isset($data['post_as_anonymous']) && isset($data['context'])) {
     $is_anonymous = $data['post_as_anonymous'];
     $context = $data['context'];
 
-    $create_new_post_sql = "INSERT INTO posts (student_id, content,is_anonymous,status) 
+    $create_new_post_sql = "INSERT INTO posts (user_id, content,is_anonymous,status) 
 VALUES ($student_id,'$context',$is_anonymous, 'pending')";
 
     mysqli_begin_transaction($con);

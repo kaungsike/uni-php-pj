@@ -16,7 +16,7 @@
                 <time class="text-lg font-semibold text-gray-900 dark:text-white">January 13th, 2022</time>
                 <ol class="mt-3 divide-y divide-gray-200 dark:divide-gray-700">
                     <?php
-                    $sql = "SELECT posts.*, users.name AS student_name, users.profile_photo as student_profile_photo FROM posts INNER JOIN users ON posts.student_id = users.id WHERE posts.status = 'approved'";
+                    $sql = "SELECT posts.*, users.name AS student_name, users.profile_photo as student_profile_photo FROM posts INNER JOIN users ON posts.user_id = users.id WHERE posts.status = 'approved'";
                     $query = mysqli_query($con, $sql);
 
                     while ($data = mysqli_fetch_assoc($query)) :
@@ -74,7 +74,7 @@
                                         $liked = false;
 
                                         foreach ($liked_user_id as $id) {
-                                            if ($id == $student_id) {
+                                            if ($id == $_SESSION['student_id']) {
                                                 $liked = true;
                                                 break;
                                             }

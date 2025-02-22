@@ -17,7 +17,7 @@
 
                 <?php
 
-                $pending_post_sql = "SELECT posts.*, users.name AS student_name, users.profile_photo as student_profile_photo FROM posts INNER JOIN users ON posts.student_id = users.id WHERE posts.status = 'pending'";
+                $pending_post_sql = "SELECT posts.*, users.name AS student_name, users.profile_photo as student_profile_photo FROM posts INNER JOIN users ON posts.user_id = users.id WHERE posts.status = 'pending'";
                 $pending_post_query = mysqli_query($con, $pending_post_sql);
 
                 ?>
@@ -63,7 +63,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="pl-[70px] mb-5">
+                                    <div class="xl:pl-[70px] mb-5">
                                         <?php
                                             $content = preg_replace('/\s{2,}/','<br>',$pending_post['content'])
                                         ?>
