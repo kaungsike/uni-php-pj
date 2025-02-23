@@ -23,7 +23,7 @@
                     ?>
                         <li>
                             <div class="mb-7 border-b border-b-neutral-300">
-                                <div class="items-center mb-2 mt-2 xl:p-3 sm:flex flex hover:bg-gray-100 gap-2 dark:hover:bg-gray-700">
+                                <div class="items-center mb-2 mt-2 sm:flex flex hover:bg-gray-100 gap-2 dark:hover:bg-gray-700">
                                     <?php
 
                                     if ($data['is_anonymous'] == "1") {
@@ -52,23 +52,40 @@
 
                                     </div>
                                 </div>
-                                <div class="xl:px-[70px]">
+                                <div class="xl:px-[25px]">
                                     <p><?= nl2br(htmlspecialchars($data['content'] ?? '')) ?></p>
-                                    <div id="monitor_like_btn_group" class="w-full h-[40px] xl:mt-5 flex items-center justify-between">
-                                        <?php
 
-                                        $user_id = $data['user_id'];
-                                        $post_id = $data['id'];
+                                    <!-- for like -->
+                                    <?php
 
-                                        $count_like_sql = "SELECT COUNT(*) AS like_count, GROUP_CONCAT(user_id) AS liked_users FROM likes WHERE post_id = $post_id";
+                                    $user_id = $data['user_id'];
+                                    $post_id = $data['id'];
 
-                                        $count_like_query = mysqli_query($con, $count_like_sql);
+                                    $count_like_sql = "SELECT COUNT(*) AS   like_count, GROUP_CONCAT(user_id) AS  liked_users FROM likes WHERE post_id =   $post_id";
 
-                                        $count_like_data = mysqli_fetch_assoc($count_like_query);
+                                    $count_like_query = mysqli_query($con,  $count_like_sql);
 
-                                        $liked_user_id = explode(",", $count_like_data['liked_users']);
+                                    $count_like_data = mysqli_fetch_assoc($count_like_query);
 
-                                        ?>
+                                    $liked_user_id = explode(",", $count_like_data['liked_users']);
+
+                                    ?>
+
+                                    <!-- for comment -->
+
+                                    <?php
+
+                                    $count_comment_sql = "SELECT post_id, COUNT(*) AS total_comments FROM comments WHERE post_id = $post_id GROUP BY post_id";
+
+                                    $count_comment_query = mysqli_query($con, $count_comment_sql);
+
+                                    $count_comment_data = mysqli_fetch_assoc($count_comment_query);
+
+                                    ?>
+
+
+
+                                    <div id="monitor_like_btn_group" class="w-full h-[40px] xl:mt-3 flex items-center justify-between">
 
                                         <?php
                                         $liked = false;
@@ -95,16 +112,47 @@
                                             <p id="count"> <?= $count_like_data['like_count'] ?></p>
                                         </button>
 
-                                        <button>
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                        <button post_id='<?= $data['id'] ?>' class="comment_btn flex items-center gap-1 active:scale-90 duration-150">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class=" pointer-events-none size-6">
                                                 <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 0 1-2.555-.337A5.972 5.972 0 0 1 5.41 20.97a5.969 5.969 0 0 1-.474-.065 4.48 4.48 0 0 0 .978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25Z" />
                                             </svg>
+                                            <p><?= $count_comment_data['total_comments'] ?></p>
                                         </button>
+
                                         <button>
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                                                 <path stroke-linecap="round" stroke-linejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z" />
                                             </svg>
                                         </button>
+
+                                    </div>
+
+                                    <?php
+
+                                    $pull_out_comment_sql = "SELECT * FROM comments WHERE user_id = ? AND post_id = ?";
+                                    $pull_out_comment_query = mysqli_query($con, $pull_out_comment_sql);
+
+
+                                    ?>
+
+                                    <div post_comment_box_id='<?= $data['id'] ?>' id="comment_section" class="hidden flex flex-col gap-3 mt-3 pb-5  rounded-lg duration-300">
+                                        <div class="w-full h-[40px] flex items-center justify-center">
+                                            <p>There is no comment yet!</p>
+                                        </div>
+                                        <div class="w-full flex gap-3 items-center ">
+                                            <div class="w-full min-w-[200px]">
+                                                <input class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow" placeholder="Type here..." />
+                                            </div>
+                                            <button class="rounded-md py-2 px-4 border border-neutral-300 text-center text-sm text-white transition-all active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" type="button">
+                                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="size-5" stroke="#d4d4d4">
+                                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                                    <g id="SVGRepo_iconCarrier">
+                                                        <path d="M10 14L13 21L20 4L3 11L6.5 12.5" stroke="#525252" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                    </g>
+                                                </svg>
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

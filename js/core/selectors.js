@@ -23,3 +23,8 @@ export const monitor_like_btn_group = document.querySelectorAll("#monitor_like_b
 export const monitor_like_btn = document.querySelectorAll("#monitor_like_btn");
 export const student_like_btn = document.querySelectorAll("#student_like_btn");
 
+
+// Comment Btn
+
+export const comment_btn = document.querySelectorAll(".comment_btn");
+export const open_comment_container = document.querySelectorAll(".open_comment_container");
