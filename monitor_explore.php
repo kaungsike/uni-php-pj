@@ -83,8 +83,6 @@
 
                                     ?>
 
-
-
                                     <div id="monitor_like_btn_group" class="w-full h-[40px] xl:mt-3 flex items-center justify-between">
 
                                         <?php
@@ -128,22 +126,40 @@
                                     </div>
 
                                     <?php
-
-                                    $pull_out_comment_sql = "SELECT * FROM comments WHERE user_id = ? AND post_id = ?";
-                                    $pull_out_comment_query = mysqli_query($con, $pull_out_comment_sql);
-
-
+                                    $comment_sql = "SELECT * FROM comments WHERE post_id = $post_id";
+                                    $comment_query = mysqli_query($con, $comment_sql);
+                                    $comment_count = mysqli_num_rows($comment_query); // Get total number of comments
                                     ?>
 
-                                    <div post_comment_box_id='<?= $data['id'] ?>' id="comment_section" class="hidden flex flex-col gap-3 mt-3 pb-5  rounded-lg duration-300">
-                                        <div class="w-full h-[40px] flex items-center justify-center">
-                                            <p>There is no comment yet!</p>
+                                    <div post_comment_box_id='<?= $data['id'] ?>' id="comment_section" class="hidden flex flex-col gap-3 border-t bg-neutral-100 border-t-neutral-300 p-3 pb-5 duration-300">
+
+                                        <div>
+                                            <?php if ($comment_count == 0) : ?>
+                                                <div class="w-full h-[40px] flex items-center justify-center">
+                                                    <p>There is no comment yet!</p>
+                                                </div>
+                                            <?php else: ?>
+                                                <?php while ($data = mysqli_fetch_assoc($comment_query)) : ?>
+                                                    <div class="flex items-start gap-2.5">
+                                                        <img class="w-8 h-8 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-3.jpg" alt="User image">
+                                                        <div class="flex flex-col w-full max-w-[320px] leading-1.5">
+                                                            <div class="flex items-center space-x-2 rtl:space-x-reverse">
+                                                                <span class="text-sm font-semibold text-gray-900 dark:text-white"><?= htmlspecialchars($data['username']) ?></span>
+                                                                <span class="text-sm font-normal text-gray-500 dark:text-gray-400"><?= htmlspecialchars($data['timestamp']) ?></span>
+                                                            </div>
+                                                            <p class="text-sm font-normal py-2 text-gray-900 dark:text-white"><?= htmlspecialchars($data['content']) ?></p>
+                                                            <span class="text-sm font-normal text-gray-500 dark:text-gray-400">Delivered</span>
+                                                        </div>
+                                                    </div>
+                                                <?php endwhile; ?>
+                                            <?php endif; ?>
                                         </div>
-                                        <div class="w-full flex gap-3 items-center ">
+
+                                        <div class="w-full flex gap-3 items-center">
                                             <div class="w-full min-w-[200px]">
-                                                <input class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow" placeholder="Type here..." />
+                                                <input class="w-full bg-transparent bg-white placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow" placeholder="Type here..." />
                                             </div>
-                                            <button class="rounded-md py-2 px-4 border border-neutral-300 text-center text-sm text-white transition-all active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" type="button">
+                                            <button class="rounded-md py-2 px-4 border border-neutral-300 bg-white text-center text-sm text-white transition-all active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" type="button">
                                                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="size-5" stroke="#d4d4d4">
                                                     <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                                                     <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
@@ -153,7 +169,11 @@
                                                 </svg>
                                             </button>
                                         </div>
+
                                     </div>
+
+
+
                                 </div>
                             </div>
                         </li>
