@@ -1317,16 +1317,16 @@ input[type="range"]::-ms-fill-lower {
   max-width: 1284px;
 }
 
+.max-w-\[320px\] {
+  max-width: 320px;
+}
+
 .max-w-md {
   max-width: 28rem;
 }
 
 .max-w-sm {
   max-width: 24rem;
-}
-
-.max-w-\[320px\] {
-  max-width: 320px;
 }
 
 .flex-1 {
@@ -1969,12 +1969,12 @@ input[type="range"]::-ms-fill-lower {
   font-weight: 500;
 }
 
-.font-semibold {
-  font-weight: 600;
-}
-
 .font-normal {
   font-weight: 400;
+}
+
+.font-semibold {
+  font-weight: 600;
 }
 
 .leading-\[150\%\] {

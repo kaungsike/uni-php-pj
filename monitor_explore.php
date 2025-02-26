@@ -133,7 +133,7 @@
 
                                     <div post_comment_box_id='<?= $data['id'] ?>' id="comment_section" class="hidden flex flex-col gap-3 border-t bg-neutral-100 border-t-neutral-300 p-3 pb-5 duration-300">
 
-                                        <div>
+                                        <div  post_id="<?= $post_id ?>" class="comment_group">
                                             <?php if ($comment_count == 0) : ?>
                                                 <div class="w-full h-[40px] flex items-center justify-center">
                                                     <p>There is no comment yet!</p>
@@ -155,19 +155,21 @@
                                             <?php endif; ?>
                                         </div>
 
-                                        <div class="w-full flex gap-3 items-center">
-                                            <div class="w-full min-w-[200px]">
-                                                <input class="w-full bg-transparent bg-white placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow" placeholder="Type here..." />
-                                            </div>
-                                            <button class="rounded-md py-2 px-4 border border-neutral-300 bg-white text-center text-sm text-white transition-all active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" type="button">
-                                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="size-5" stroke="#d4d4d4">
-                                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                                                    <g id="SVGRepo_iconCarrier">
-                                                        <path d="M10 14L13 21L20 4L3 11L6.5 12.5" stroke="#525252" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                                                    </g>
-                                                </svg>
-                                            </button>
+                                        <div class="w-full">
+                                            <form post_id="<?= $post_id ?>" id="monitor_comment_form" class="w-full flex gap-3 items-center">
+                                                <div class="w-full min-w-[200px]">
+                                                    <input id="input_comment" name="context" class="w-full bg-transparent bg-white placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow" placeholder="Type here..." />
+                                                </div>
+                                                <button id="form_button" post_id="<?=$post_id ?>" class="monitor_comment_btn rounded-md py-2 px-4 border border-neutral-300 bg-white text-center text-sm text-white transition-all active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" type="submit">
+                                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="size-5 pointer-events-none" stroke="#d4d4d4">
+                                                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                                        <g id="SVGRepo_iconCarrier">
+                                                            <path d="M10 14L13 21L20 4L3 11L6.5 12.5" stroke="#525252" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                        </g>
+                                                    </svg>
+                                                </button>
+                                            </form>
                                         </div>
 
                                     </div>

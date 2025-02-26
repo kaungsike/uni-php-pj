@@ -28,3 +28,6 @@ export const student_like_btn = document.querySelectorAll("#student_like_btn");
 
 export const comment_btn = document.querySelectorAll(".comment_btn");
 export const open_comment_container = document.querySelectorAll(".open_comment_container");
+export const monitor_comment_form = document.querySelectorAll("#monitor_comment_form");
+export const monitor_comment_btn = document.querySelectorAll(".monitor_comment_btn");
+
