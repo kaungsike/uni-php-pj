@@ -1,15 +1,14 @@
 <?php
 
-session_start();
 
 include("./__sql_connection.php");
-include("./monitor_data.php");
+include("./student_data.php");
 
 header('Content-Type: text/plain');
 
 $data = json_decode(file_get_contents("php://input"), true);
 
-$monitor_id = $monitor_data['id'];
+$student_id = $student_data['id'];
 
 
 if (isset($data['post_id']) && isset($data['context'])) {
@@ -25,7 +24,7 @@ if (isset($data['post_id']) && isset($data['context'])) {
     try {
 
         $new_comment_sql = "INSERT INTO `comments` (`user_id`, `post_id`, `parent_id`, `content`, `created_at`) 
-                            VALUES ('$monitor_id', '$post_id', $parent_id, '$context', CURRENT_TIMESTAMP)";
+                            VALUES ('$student_id', '$post_id', $parent_id, '$context', CURRENT_TIMESTAMP)";
 
         if (!mysqli_query($con, $new_comment_sql)) {
             throw new Exception("Failed to create new post : " . mysqli_error($con));

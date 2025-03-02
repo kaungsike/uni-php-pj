@@ -71,8 +71,6 @@
 
                                     ?>
 
-                                    <!-- for comment -->
-
                                     <?php
 
                                     $count_comment_sql = "SELECT post_id, COUNT(*) AS total_comments FROM comments WHERE post_id = $post_id GROUP BY post_id";
@@ -82,6 +80,8 @@
                                     $count_comment_data = mysqli_fetch_assoc($count_comment_query);
 
                                     ?>
+
+
 
                                     <div id="monitor_like_btn_group" class="w-full h-[40px] xl:mt-3 flex items-center justify-between">
 
@@ -95,9 +95,8 @@
                                             }
                                         }
                                         ?>
+
                                         <button post_id='<?= $data['id'] ?>' liked="<?= $liked ?>" id="monitor_like_btn" class="flex items-center gap-1 active:scale-90 duration-150">
-
-
                                             <?php if ($liked): ?>
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6  stroke-red-500 fill-red-500 pointer-events-none">
                                                     <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
@@ -122,45 +121,140 @@
                                                 <path stroke-linecap="round" stroke-linejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z" />
                                             </svg>
                                         </button>
-
                                     </div>
 
+
                                     <?php
-                                    $comment_sql = "SELECT * FROM comments WHERE post_id = $post_id";
+                                    $comment_sql = "SELECT * FROM comments WHERE post_id = $post_id AND parent_id IS NULL ORDER BY created_at ASC";
                                     $comment_query = mysqli_query($con, $comment_sql);
-                                    $comment_count = mysqli_num_rows($comment_query); // Get total number of comments
+                                    $comment_count = mysqli_num_rows($comment_query);
+
                                     ?>
 
-                                    <div post_comment_box_id='<?= $data['id'] ?>' id="comment_section" class="hidden flex flex-col gap-3 border-t bg-neutral-100 border-t-neutral-300 p-3 pb-5 duration-300">
+                                    <div post_comment_box_id='<?= $data['id'] ?>' id="comment_section" class=" hidden flex flex-col gap-3 border-t border-t-neutral-300  pb-5 duration-300">
 
-                                        <div  post_id="<?= $post_id ?>" class="comment_group">
+                                        <div post_id="<?= $post_id ?>" class="comment_group p-3 pt-5">
                                             <?php if ($comment_count == 0) : ?>
+
                                                 <div class="w-full h-[40px] flex items-center justify-center">
                                                     <p>There is no comment yet!</p>
                                                 </div>
+
                                             <?php else: ?>
                                                 <?php while ($data = mysqli_fetch_assoc($comment_query)) : ?>
-                                                    <div class="flex items-start gap-2.5">
-                                                        <img class="w-8 h-8 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-3.jpg" alt="User image">
-                                                        <div class="flex flex-col w-full max-w-[320px] leading-1.5">
+
+                                                    <?php
+
+                                                    $comment_id = $data['id'];
+
+                                                    $user_id = $data['user_id'];
+                                                    $user_sql = "SELECT profile_photo, name , role FROM users WHERE id = $user_id";
+                                                    $user_query = mysqli_query($con, $user_sql);
+                                                    $user_data = mysqli_fetch_assoc($user_query);
+
+                                                    $reply_sq = "SELECT comments.*, 
+                                                                users.name AS name,   
+                                                                users.profile_photo AS profile_photo
+                                                                FROM comments
+                                                                JOIN users ON comments.user_id = users.id
+                                                                WHERE comments.post_id = $post_id AND comments.parent_id = $comment_id
+                                                                ORDER BY comments.created_at ASC";
+                                                    $reply_query = mysqli_query($con, $reply_sq);
+                                                    $reply_count = mysqli_num_rows($reply_query);
+
+
+                                                    ?>
+
+                                                    <div class="comment_box flex items-start gap-2.5 mt-3">
+                                                        <img class="w-8 h-8 rounded-full" src="<?= $user_data["profile_photo"] ?>" alt="Jese image">
+                                                        <div class="flex flex-col gap-1 w-full ">
                                                             <div class="flex items-center space-x-2 rtl:space-x-reverse">
-                                                                <span class="text-sm font-semibold text-gray-900 dark:text-white"><?= htmlspecialchars($data['username']) ?></span>
-                                                                <span class="text-sm font-normal text-gray-500 dark:text-gray-400"><?= htmlspecialchars($data['timestamp']) ?></span>
+                                                                <span comment_id='<?= $data['id'] ?>' class="name text-sm font-semibold text-gray-900 dark:text-white"><?= htmlspecialchars($user_data['name']) ?></span>
+                                                                <span class="text-sm font-normal text-gray-500 dark:text-gray-400"><?= $data['created_at'] ?></span>
                                                             </div>
-                                                            <p class="text-sm font-normal py-2 text-gray-900 dark:text-white"><?= htmlspecialchars($data['content']) ?></p>
-                                                            <span class="text-sm font-normal text-gray-500 dark:text-gray-400">Delivered</span>
+                                                            <div class="flex flex-col leading-1.5 p-4 border-gray-200 bg-neutral-100 rounded-e-xl rounded-es-xl dark:bg-gray-700">
+                                                                <p class="text-sm font-normal text-gray-900 dark:text-white"><?= htmlspecialchars($data['content']) ?></p>
+                                                            </div>
+                                                            <?php
+
+                                                            if ($reply_count != 0) {
+                                                            ?>
+
+                                                                <button post_id="<?= $post_id ?>" parent_id="<?= $comment_id ?>" class="view_reply_btn flex items-center gap-2 text-sm w-full text-start font-normal text-neutral-700 dark:text-white">View more reply...
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
+                                                                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.98 8.223A10.477 10.477 0 0 0 1.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.451 10.451 0 0 1 12 4.5c4.756 0 8.773 3.162 10.065 7.498a10.522 10.522 0 0 1-4.293 5.774M6.228 6.228 3 3m3.228 3.228 3.65 3.65m7.894 7.894L21 21m-3.228-3.228-3.65-3.65m0 0a3 3 0 1 0-4.243-4.243m4.242 4.242L9.88 9.88" />
+                                                                    </svg>
+                                                                </button>
+
+                                                                <div post_id="<?= $post_id ?>" parent_id="<?= $comment_id ?>" class="reply_comment_container hidden w-full py-1">
+                                                                    <?php while ($reply_data = mysqli_fetch_assoc($reply_query)) :  ?>
+
+                                                                        <!-- _____________________________ -->
+
+                                                                        <div class="comment_box flex items-start gap-2.5 mt-3">
+                                                                            <img class="w-8 h-8 rounded-full" src="<?= $reply_data['profile_photo'] ?>" alt="Jese image">
+                                                                            <div class="flex flex-col gap-1 w-full ">
+                                                                                <div class="flex items-center space-x-2 rtl:space-x-reverse">
+                                                                                    <span class="name text-sm font-semibold text-gray-900 dark:text-white"><?= $reply_data['name'] ?></span>
+                                                                                    <span class="text-sm font-normal text-gray-500 dark:text-gray-400"><?= $reply_data['created_at'] ?></span>
+                                                                                </div>
+                                                                                <div class="flex flex-col leading-1.5 p-4 border-gray-200 bg-neutral-100 rounded-e-xl rounded-es-xl dark:bg-gray-700">
+                                                                                    <p class="text-sm font-normal text-gray-900 dark:text-white"><?= htmlspecialchars($reply_data['content']) ?></p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+
+                                                                    <?php endwhile; ?>
+
+                                                                </div>
+
+                                                            <?php
+                                                            } else {
+                                                            ?>
+
+                                                                <div post_id="<?= $post_id ?>" parent_id="<?= $comment_id ?>" class="reply_comment_container hidden w-full py-1">
+
+                                                                </div>
+
+                                                            <?php
+                                                            }
+                                                            ?>
+
                                                         </div>
+
+                                                        <button post_id="<?= $post_id ?>" comment_id="<?= $data['id'] ?>" class="comment_reply_btn text-sm text-start font-normal text-gray-500 mt-9 dark:text-gray-400 ">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5 pointer-events-none">
+                                                                <path stroke-linecap="round" stroke-linejoin="round" d="m15 15 6-6m0 0-6-6m6 6H9a6 6 0 0 0 0 12h3" />
+                                                            </svg>
+
+                                                        </button>
                                                     </div>
+
+
                                                 <?php endwhile; ?>
                                             <?php endif; ?>
                                         </div>
 
-                                        <div class="w-full">
-                                            <form post_id="<?= $post_id ?>" id="monitor_comment_form" class="w-full flex gap-3 items-center">
-                                                <div class="w-full min-w-[200px]">
-                                                    <input id="input_comment" name="context" class="w-full bg-transparent bg-white placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow" placeholder="Type here..." />
+                                        <div class="w-full p-3">
+
+                                            <div post_id="<?= $post_id ?>" class="reply_mention_box hidden w-full bg-white flex items-center justify-between border py-1 px-2 mb-1 rounded">
+                                                <div class="flex items-center">
+                                                    <p class="reply_to text-sm text-neutral-500"></p>
+                                                    <input post_id="<?= $post_id ?>" type="text" name="" id="" class="reply_to text-sm text-blue-500 outline-none border-none p-0 bg-transparent" value="">
                                                 </div>
-                                                <button id="form_button" post_id="<?=$post_id ?>" class="monitor_comment_btn rounded-md py-2 px-4 border border-neutral-300 bg-white text-center text-sm text-white transition-all active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" type="submit">
+                                                <button post_id="<?= $post_id ?>" class="close_reply_mention_box_btn active:scale-90 duration-150">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 stroke-neutral-500 pointer-events-none">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                                    </svg>
+                                                </button>
+                                            </div>
+
+                                            <form post_id="<?= $post_id ?>" id="monitor_comment_form" class="comment_form w-full flex gap-3 items-center">
+                                                <div class="w-full min-w-[200px]">
+                                                    <input required id="input_comment" name="context" class="w-full bg-transparent bg-white placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow" placeholder="Type here..." />
+                                                </div>
+                                                <button id="form_button" post_id="<?= $post_id ?>" class="monitor_comment_btn rounded-md py-2 px-4 border border-neutral-300 bg-white text-center text-sm text-white transition-all active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" type="submit">
                                                     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="size-5 pointer-events-none" stroke="#d4d4d4">
                                                         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                                                         <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
@@ -173,8 +267,6 @@
                                         </div>
 
                                     </div>
-
-
 
                                 </div>
                             </div>
