@@ -181,6 +181,10 @@ const listener = () => {
 
         console.log("info requesting... ", post_as_anonymous, context);
 
+        formData['images'].forEach((img) => console.log(img))
+
+        return;
+
         button.innerHTML = `  <svg class="text-gray-300 hover:bg-current w-full animate-spin" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"
     width="24" height="24">
     <path

@@ -19,7 +19,7 @@
 
                 <?php
 
-                $pending_post_sql = "SELECT posts.*, users.name AS student_name, users.profile_photo as student_profile_photo FROM posts INNER JOIN users ON posts.student_id = users.id WHERE posts.status = 'approved'";
+                $pending_post_sql = "SELECT posts.*, users.name AS student_name, users.profile_photo as student_profile_photo FROM posts INNER JOIN users ON posts.user_id = users.id WHERE posts.status = 'approved'";
                 $pending_post_query = mysqli_query($con, $pending_post_sql);
 
                 ?>
