@@ -1,51 +1,76 @@
 <?php
-
-session_start();
-
 include("./__sql_connection.php");
 include("./monitor_data.php");
 
-header('Content-Type: text/plain');
-
-$data = json_decode(file_get_contents("php://input"), true);
+header('Content-Type: application/json');
 
 $monitor_id = $monitor_data['id'];
 
-if (isset($data['post_as_anonymous']) && isset($data['context'])) {
+if (isset($_POST['post_as_anonymous']) && isset($_POST['context'])) {
 
     sleep(3);
 
-    $is_anonymous = $data['post_as_anonymous'];
-    $context = $data['context'];
-
-    $create_new_post_sql = "INSERT INTO posts (user_id, content,is_anonymous,status) 
-VALUES ($monitor_id,'$context',$is_anonymous, 'pending')";
+    $is_anonymous = mysqli_real_escape_string($con, $_POST['post_as_anonymous']);
+    $context = mysqli_real_escape_string($con, $_POST['context']);
 
     mysqli_begin_transaction($con);
 
     try {
+        // Insert post into database
+        $create_new_post_sql = "INSERT INTO posts (user_id, content, is_anonymous, status) VALUES ($monitor_id, '$context', $is_anonymous, 'pending')";
 
         if (!mysqli_query($con, $create_new_post_sql)) {
-            throw new Exception("Failed to create new post : " . mysqli_error($con));
+            throw new Exception("Failed to create new post: " . mysqli_error($con));
         }
 
+        $post_id = mysqli_insert_id($con);
+
+        // Handle multiple image uploads
+        $uploadDir = "uploads/";
+        $imagePaths = [];
+
+        // Check if the upload directory exists, if not create it
+        if (!file_exists($uploadDir)) {
+            if (!mkdir($uploadDir, 0777, true)) {
+                throw new Exception("Failed to create upload directory.");
+            }
+        }
+
+        // Process each uploaded image
+        foreach ($_FILES['images']['tmp_name'] as $key => $tmp_name) {
+            $fileName = basename($_FILES['images']['name'][$key]);
+            $targetFilePath = $uploadDir . uniqid() . "_" . $fileName;
+
+            // Move uploaded file
+            if (move_uploaded_file($tmp_name, $targetFilePath)) {
+                $imagePaths[] = $targetFilePath;
+
+                // Insert image into database
+                $insert_image_sql = "INSERT INTO post_images (post_id, image_path) VALUES ($post_id, '$targetFilePath')";
+                if (!mysqli_query($con, $insert_image_sql)) {
+                    throw new Exception("Failed to insert image into database: " . mysqli_error($con));
+                }
+            } else {
+                throw new Exception("Failed to upload image: $fileName");
+            }
+        }
+
+        // Commit the transaction if everything is successful
         mysqli_commit($con);
 
-        echo json_encode(true);
-
+        // Return the response with image paths
+        echo json_encode(["success" => true, "message" => "Post and images uploaded successfully!", "image_paths" => $imagePaths]);
         exit;
 
     } catch (Exception $e) {
-
+        // Rollback in case of an error
         mysqli_rollback($con);
-
-        echo json_encode(false);
-
+        echo json_encode(["success" => false, "message" => "Failed to upload post and images: " . $e->getMessage()]);
         exit;
     }
 
 } else {
-    echo json_encode(["success" => true, "don't receive data" => "it don't work i think"]);
+    echo json_encode(["success" => false, "message" => "Missing data"]);
+    exit;
 }
-
-exit;
+?>

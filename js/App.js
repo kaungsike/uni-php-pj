@@ -10,6 +10,7 @@ class App{
         handleModal();
         handleMonitor();
         handleStudent();
+
     }
 }
 

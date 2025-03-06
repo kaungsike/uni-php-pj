@@ -1,4 +1,4 @@
-<div id="modal" class="blur-me absolute hidden h-full top-0 flex justify-center w-full xl:pl-[256px] xl:pt-[200px]">
+<div id="modal" class="blur-me absolute hidden z-50 h-full top-0 flex justify-center w-full xl:pl-[256px] xl:pt-[200px]">
     <div class="mx-auto bg-white xl:w-[900px] flex-col h-[500px] items-center z-50 border border-neutral-300 rounded-lg p-6">
         <form id="monitor_new_feedback_form" method="POST" enctype="multipart/form-data" class="flex w-full flex-1 flex-col justify-between gap-6">
             <div class="flex items-center justify-between w-full h-[50px]">
@@ -35,9 +35,14 @@
                         <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
                         <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
                     </div>
-                    <input name="images" multiple id="dropzone-file" type="file" class="hidden" />
+                    <input name="images" multiple id="dropzone-file" type="file" class="images_upload hidden" />
                 </label>
+
+                <!-- <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Upload file</label>
+                <input name="images" multiple class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file"> -->
+
             </div>
+
 
 
             <div class="flex flex-col items-center gap-4 sm:mt-auto sm:flex-row sm:justify-end">
