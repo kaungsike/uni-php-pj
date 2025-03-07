@@ -38,3 +38,9 @@ export const view_reply_btn = document.querySelectorAll(".view_reply_btn");
 // student
 
 export const student_comment_form = document.querySelectorAll("#student_comment_form");
+
+
+
+// expend more image
+
+export const more_image_btn = document.querySelectorAll(".more_image_btn");

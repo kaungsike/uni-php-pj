@@ -69,7 +69,10 @@
                                     }
 
                                     $image_count = count($images);
+
                                     ?>
+
+
 
                                     <?php if ($image_count > 0): ?>
                                         <div class="w-full mt-3">
@@ -98,26 +101,25 @@
                                             <?php elseif ($image_count >= 4): ?>
                                                 <!-- Four or More Images -->
                                                 <div class="grid grid-cols-2 gap-1">
-                                                    <!-- First image spans full width -->
-                                                    <img src="<?= $images[0] ?>" class="w-full h-[300px] object-cover col-span-2" onclick="openImageModal('<?= $images[0]  ?>')" alt="">
+                                                    <img src="<?= $images[0] ?>" class="w-full h-[300px] object-cover col-span-2" onclick="openImageModal('<?= $images[0] ?>')" alt="">
+                                                    <img src="<?= $images[1] ?>" class="w-full h-[220px] object-cover" onclick="openImageModal('<?= $images[1] ?>')" alt="">
 
-                                                    <!-- Second image -->
-                                                    <img src="<?= $images[1] ?>" class="w-full h-[220px] object-cover" onclick="openImageModal('<?= $images[1]  ?>')" alt="">
-
-                                                    <!-- Third image with overlay -->
                                                     <div class="relative h-[220px]">
                                                         <img src="<?= $images[2] ?>" class="w-full h-full object-cover" onclick="openImageModal('<?= $images[2] ?>')" alt="">
 
                                                         <!-- Overlay properly centered -->
                                                         <?php if ($image_count > 3): ?>
-                                                            <div class="absolute z-10 inset-0 flex items-center justify-center bg-black bg-opacity-50 text-white text-xl font-bold">
+                                                            <div post_id='<?= $post_id ?>' class="more_image_btn absolute z-10 inset-0 flex items-center justify-center bg-black bg-opacity-50 text-white text-xl font-bold">
                                                                 +<?= $image_count - 3 ?>
+
+                                                                <!-- Store hidden images -->
+                                                                <?php foreach (array_slice($images, 3) as $hidden_image): ?>
+                                                                    <img src="<?= $hidden_image ?>" class="hidden more-images" alt="">
+                                                                <?php endforeach; ?>
                                                             </div>
                                                         <?php endif; ?>
                                                     </div>
                                                 </div>
-
-
                                             <?php endif; ?>
                                         </div>
                                     <?php endif; ?>

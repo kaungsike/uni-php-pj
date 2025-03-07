@@ -1,5 +1,5 @@
 // import toastify from "toastify-js.";
-import { approve_btn, closeModal_btn, comment_btn, comment_reply_btn, monitor_new_feedback_form, open_comment_container, refuse_btn, signin_form, student_new_feedback_form, view_reply_btn } from "./selectors.js";
+import { approve_btn, closeModal_btn, comment_btn, comment_reply_btn, monitor_new_feedback_form, more_image_btn, open_comment_container, refuse_btn, signin_form, student_new_feedback_form, view_reply_btn } from "./selectors.js";
 
 const listener = () => {
     approve_btn.forEach((btn) => {
@@ -402,6 +402,12 @@ const listener = () => {
             closeBtn.addEventListener("click", () => {
                 replyMentionBox.classList.add("hidden");
             })
+        })
+    })
+
+    more_image_btn && more_image_btn.forEach((btn) => {
+        btn.addEventListener(("click"),(e) => {
+            const target = e.target;
         })
     })
 
