@@ -1,0 +1,39 @@
+Array
+(
+    [name] => Array
+        (
+            [0] => cat.jpeg
+            [1] => image1.jpg
+        )
+
+    [full_path] => Array
+        (
+            [0] => cat.jpeg
+            [1] => image1.jpg
+        )
+
+    [type] => Array
+        (
+            [0] => image/jpeg
+            [1] => image/jpeg
+        )
+
+    [tmp_name] => Array
+        (
+            [0] => /tmp/phpQj48EB
+            [1] => /tmp/php9UXPNn
+        )
+
+    [error] => Array
+        (
+            [0] => 0
+            [1] => 0
+        )
+
+    [size] => Array
+        (
+            [0] => 3306
+            [1] => 3306
+        )
+
+)

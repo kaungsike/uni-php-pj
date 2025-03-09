@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./src/output.css">
     <link
   rel="stylesheet"
-  href="https://unpkg.com/@material-tailwind/html@latest/styles/material-tailwind.css"
+  href="https://unpkg.com/@material-tailwind/html@latest/styles.css"
 />
 
 

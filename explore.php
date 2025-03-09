@@ -56,10 +56,88 @@
                                 <div class="xl:px-[25px]">
                                     <p><?= nl2br(htmlspecialchars($data['content'] ?? '')) ?></p>
 
+
+                                    <!-- for images -->
                                     <?php
 
                                     $user_id = $data['user_id'];
                                     $post_id = $data['id'];
+
+                                    $images_sql = "SELECT * FROM `post_images` WHERE post_id=$post_id";
+                                    $images_query = mysqli_query($con, $images_sql);
+                                    $images = [];
+
+                                    while ($image = mysqli_fetch_assoc($images_query)) {
+                                        $images[] = $image['image_path'];
+                                    }
+
+                                    $image_count = count($images);
+
+
+                                    ?>
+
+                                    <?php if ($image_count > 0): ?>
+                                        <div class="w-full mt-3 flex flex-col items-center gap-1 post_container">
+                                            <?php if ($image_count == 1): ?>
+                                                <!-- Single Image -->
+                                                <div class="flex items-center justify-center">
+                                                    <img src="<?= $images[0] ?>" class="max-h-[450px] w-full object-cover" onclick="openImageModal('<?= $images[0] ?>')" alt="">
+                                                </div>
+
+                                            <?php elseif ($image_count == 2): ?>
+                                                <!-- Two Images -->
+                                                <div class="grid grid-cols-2 gap-1">
+                                                    <?php foreach ($images as $image): ?>
+                                                        <img src="<?= $image ?>" class="w-full h-[450px] object-cover" onclick="openImageModal('<?= $image ?>')" alt="">
+                                                    <?php endforeach; ?>
+                                                </div>
+
+                                            <?php elseif ($image_count == 3): ?>
+                                                <!-- Three Images -->
+                                                <div class="grid grid-cols-2 gap-1">
+                                                    <img src="<?= $images[0] ?>" class="w-full h-[300px] object-cover col-span-2" onclick="openImageModal('<?= $images[0] ?>')" alt="">
+                                                    <img src="<?= $images[1] ?>" class="w-full h-[220px] object-cover" onclick="openImageModal('<?= $images[1] ?>')" alt="">
+                                                    <img src="<?= $images[2] ?>" class="w-full h-[220px] object-cover" onclick="openImageModal('<?= $images[2] ?>')" alt="">
+                                                </div>
+
+                                            <?php elseif ($image_count >= 4): ?>
+                                                <!-- Four or More Images -->
+                                                <div class="grid grid-cols-2 gap-1">
+                                                    <img src="<?= $images[0] ?>" class="w-full h-[300px] object-cover col-span-2" onclick="openImageModal('<?= $images[0] ?>')" alt="">
+                                                    <img src="<?= $images[1] ?>" class="w-full h-[220px] object-cover" onclick="openImageModal('<?= $images[1] ?>')" alt="">
+
+                                                    <div class="relative h-[220px]">
+                                                        <img src="<?= $images[2] ?>" class="w-full h-full max-h-[300px] object-cover" onclick="openImageModal('<?= $images[2] ?>')" alt="">
+
+                                                        <!-- Overlay properly centered -->
+                                                        <?php if ($image_count > 3): ?>
+                                                            <div post_id='<?= $post_id ?>' class="more_image_btn absolute z-10 inset-0 flex items-center justify-center bg-black bg-opacity-50 text-white text-xl font-bold">
+                                                                +<?= $image_count - 3 ?>
+
+                                                                <!-- Store hidden images -->
+                                                                <?php foreach (array_slice($images, 3) as $hidden_image): ?>
+                                                                    <img src="<?= $hidden_image ?>" class="max-h-[300px] object-cover hidden more-images w-full" onclick="openImageModal('<?= $hidden_image ?>')" alt="">
+                                                                <?php endforeach; ?>
+                                                            </div>
+                                                        <?php endif; ?>
+                                                    </div>
+                                                </div>
+                                            <?php endif; ?>
+                                        </div>
+                                    <?php endif; ?>
+
+
+                                    <!-- Modal Container -->
+                                    <div id="imageModal" class="fixed inset-0 hidden bg-black bg-opacity-80 flex items-center justify-center z-50">
+                                        <div class="relative">
+                                            <button id="closeModal" class="absolute -top-4 -right-4 text-white text-3xl"></button>
+                                            <img id="modalImage" class="max-w-[90vw] max-h-[90vh] object-contain rounded-lg">
+                                        </div>
+                                    </div>
+
+                                    <!-- for likes -->
+                                    <?php
+
 
                                     $count_like_sql = "SELECT COUNT(*) AS like_count, GROUP_CONCAT(user_id) AS liked_users FROM likes WHERE post_id = $post_id";
 
@@ -80,6 +158,9 @@
                                     $count_comment_data = mysqli_fetch_assoc($count_comment_query);
 
                                     ?>
+
+
+
 
                                     <div id="student_like_btn_group" class="w-full h-[40px] mt-5 flex items-center justify-between">
 

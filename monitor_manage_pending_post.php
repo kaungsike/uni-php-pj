@@ -68,7 +68,10 @@
                                             $content = preg_replace('/\s{2,}/','<br>',$pending_post['content'])
                                         ?>
                                         <p><?=$content ?></p>
+                                        
                                     </div>
+                                    
+
                                 </div>
                             </li>
                         <?php endwhile; ?>

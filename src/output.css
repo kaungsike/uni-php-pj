@@ -1200,6 +1200,10 @@ input[type="range"]::-ms-fill-lower {
   height: 150px;
 }
 
+.h-\[175px\] {
+  height: 175px;
+}
+
 .h-\[200px\] {
   height: 200px;
 }
@@ -1236,6 +1240,10 @@ input[type="range"]::-ms-fill-lower {
   height: 50px;
 }
 
+.h-\[600px\] {
+  height: 600px;
+}
+
 .h-\[70px\] {
   height: 70px;
 }
@@ -1252,12 +1260,20 @@ input[type="range"]::-ms-fill-lower {
   height: 100vh;
 }
 
+.max-h-\[300px\] {
+  max-height: 300px;
+}
+
 .max-h-\[450px\] {
   max-height: 450px;
 }
 
 .max-h-\[90vh\] {
   max-height: 90vh;
+}
+
+.min-h-\[40px\] {
+  min-height: 40px;
 }
 
 .min-h-screen {
@@ -1434,6 +1450,10 @@ input[type="range"]::-ms-fill-lower {
   justify-content: space-between;
 }
 
+.justify-evenly {
+  justify-content: space-evenly;
+}
+
 .gap-1 {
   gap: 0.25rem;
 }
@@ -1534,6 +1554,10 @@ input[type="range"]::-ms-fill-lower {
 
 .overflow-y-auto {
   overflow-y: auto;
+}
+
+.overflow-x-scroll {
+  overflow-x: scroll;
 }
 
 .scroll-smooth {
@@ -1812,6 +1836,10 @@ input[type="range"]::-ms-fill-lower {
 
 .p-0 {
   padding: 0px;
+}
+
+.p-1 {
+  padding: 0.25rem;
 }
 
 .p-1\.5 {
@@ -2256,6 +2284,10 @@ input[type="range"]::-ms-fill-lower {
 .placeholder\:text-slate-400::placeholder {
   --tw-text-opacity: 1;
   color: rgb(148 163 184 / var(--tw-text-opacity, 1));
+}
+
+.first\:flex:first-child {
+  display: flex;
 }
 
 .hover\:border:hover {

@@ -6,46 +6,48 @@ header('Content-Type: application/json');
 
 $monitor_id = $monitor_data['id'];
 
-if (isset($_POST['post_as_anonymous']) && isset($_POST['context'])) {
+if (!isset($_POST['post_as_anonymous']) || !isset($_POST['context'])) {
+    echo json_encode(["success" => false, "message" => "Missing data"]);
+    exit;
+}
 
-    sleep(3);
+sleep(3);
 
-    $is_anonymous = mysqli_real_escape_string($con, $_POST['post_as_anonymous']);
-    $context = mysqli_real_escape_string($con, $_POST['context']);
+$is_anonymous = mysqli_real_escape_string($con, $_POST['post_as_anonymous']);
+$context = mysqli_real_escape_string($con, $_POST['context']);
 
-    mysqli_begin_transaction($con);
+mysqli_begin_transaction($con);
 
-    try {
-        // Insert post into database
-        $create_new_post_sql = "INSERT INTO posts (user_id, content, is_anonymous, status) VALUES ($monitor_id, '$context', $is_anonymous, 'pending')";
+try {
 
-        if (!mysqli_query($con, $create_new_post_sql)) {
-            throw new Exception("Failed to create new post: " . mysqli_error($con));
-        }
+    $create_new_post_sql = "INSERT INTO posts (user_id, content, is_anonymous, status) VALUES ($monitor_id, '$context', $is_anonymous, 'pending')";
 
-        $post_id = mysqli_insert_id($con);
+    if (!mysqli_query($con, $create_new_post_sql)) {
+        throw new Exception("Failed to create new post: " . mysqli_error($con));
+    }
 
-        // Handle multiple image uploads
-        $uploadDir = "uploads/";
-        $imagePaths = [];
+    $post_id = mysqli_insert_id($con);
 
-        // Check if the upload directory exists, if not create it
-        if (!file_exists($uploadDir)) {
-            if (!mkdir($uploadDir, 0777, true)) {
-                throw new Exception("Failed to create upload directory.");
-            }
-        }
+    $uploadDir = "uploads/";
+    $imagePaths = [];
+    
+    if (!file_exists($uploadDir) && !mkdir($uploadDir, 0777, true)) {
+        throw new Exception("Failed to create upload directory.");
+    }
+    
+    foreach ($_FILES['images']['tmp_name'] as $key => $tmp_name) {
+        $fileName = basename($_FILES['images']['name'][$key]);
+    
 
-        // Process each uploaded image
-        foreach ($_FILES['images']['tmp_name'] as $key => $tmp_name) {
-            $fileName = basename($_FILES['images']['name'][$key]);
-            $targetFilePath = $uploadDir . uniqid() . "_" . $fileName;
+        $targetFilePath = $uploadDir . $fileName;
+    
+        if (file_exists($targetFilePath)) {
+            $imagePaths[] = $targetFilePath;
+        } else {
 
-            // Move uploaded file
             if (move_uploaded_file($tmp_name, $targetFilePath)) {
                 $imagePaths[] = $targetFilePath;
-
-                // Insert image into database
+    
                 $insert_image_sql = "INSERT INTO post_images (post_id, image_path) VALUES ($post_id, '$targetFilePath')";
                 if (!mysqli_query($con, $insert_image_sql)) {
                     throw new Exception("Failed to insert image into database: " . mysqli_error($con));
@@ -54,23 +56,15 @@ if (isset($_POST['post_as_anonymous']) && isset($_POST['context'])) {
                 throw new Exception("Failed to upload image: $fileName");
             }
         }
-
-        // Commit the transaction if everything is successful
-        mysqli_commit($con);
-
-        // Return the response with image paths
-        echo json_encode(["success" => true, "message" => "Post and images uploaded successfully!", "image_paths" => $imagePaths]);
-        exit;
-
-    } catch (Exception $e) {
-        // Rollback in case of an error
-        mysqli_rollback($con);
-        echo json_encode(["success" => false, "message" => "Failed to upload post and images: " . $e->getMessage()]);
-        exit;
     }
+    
+    mysqli_commit($con);
 
-} else {
-    echo json_encode(["success" => false, "message" => "Missing data"]);
+    echo json_encode(["success" => true, "message" => "Post and images uploaded successfully!", "image_paths" => $imagePaths]);
+    exit;
+} catch (Exception $e) {
+    // Rollback in case of an error
+    mysqli_rollback($con);
+    echo json_encode(["success" => false, "message" => "Failed to upload post and images: " . $e->getMessage()]);
     exit;
 }
-?>

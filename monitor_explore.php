@@ -75,7 +75,7 @@
 
 
                                     <?php if ($image_count > 0): ?>
-                                        <div class="w-full mt-3">
+                                        <div class="w-full mt-3 flex flex-col items-center gap-1 post_container">
                                             <?php if ($image_count == 1): ?>
                                                 <!-- Single Image -->
                                                 <div class="flex items-center justify-center">
@@ -105,7 +105,7 @@
                                                     <img src="<?= $images[1] ?>" class="w-full h-[220px] object-cover" onclick="openImageModal('<?= $images[1] ?>')" alt="">
 
                                                     <div class="relative h-[220px]">
-                                                        <img src="<?= $images[2] ?>" class="w-full h-full object-cover" onclick="openImageModal('<?= $images[2] ?>')" alt="">
+                                                        <img src="<?= $images[2] ?>" class="w-full h-full max-h-[300px] object-cover" onclick="openImageModal('<?= $images[2] ?>')" alt="">
 
                                                         <!-- Overlay properly centered -->
                                                         <?php if ($image_count > 3): ?>
@@ -114,7 +114,7 @@
 
                                                                 <!-- Store hidden images -->
                                                                 <?php foreach (array_slice($images, 3) as $hidden_image): ?>
-                                                                    <img src="<?= $hidden_image ?>" class="hidden more-images" alt="">
+                                                                    <img src="<?= $hidden_image ?>" class="max-h-[300px] object-cover hidden more-images w-full"  onclick="openImageModal('<?= $hidden_image ?>')"  alt="">
                                                                 <?php endforeach; ?>
                                                             </div>
                                                         <?php endif; ?>

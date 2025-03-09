@@ -44,3 +44,7 @@ export const student_comment_form = document.querySelectorAll("#student_comment_
 // expend more image
 
 export const more_image_btn = document.querySelectorAll(".more_image_btn");
+
+// show image in new post form
+
+export const dropzone_file = document.querySelector("#dropzone-file");

@@ -1,5 +1,5 @@
 
-import { monitor_comment_form, monitor_like_btn } from "./selectors.js";
+import { comment_reply_btn, monitor_comment_form, monitor_like_btn } from "./selectors.js";
 
 const handleMonitor = () => {
 
@@ -208,34 +208,34 @@ const handleMonitor = () => {
     })
 
 
-    // comment_reply_btn.forEach((btn) => {
-    //     btn.addEventListener("click", (e) => {
+    comment_reply_btn && comment_reply_btn.forEach((btn) => {
+        btn.addEventListener("click", (e) => {
 
-    //         const post_id = e.target.getAttribute("post_id");
+            const post_id = e.target.getAttribute("post_id");
 
-    //         const commentBox = e.target.closest(".comment_box");
-    //         const parent_id = commentBox.querySelector(".name").getAttribute("comment_id")
-    //         const name = commentBox.querySelector(".name").innerText
-    //         const comment_form = document.querySelector(`.comment_form[post_id='${post_id}']`);
-    //         const comment_form_input = comment_form.querySelector("#input_comment");
-    //         const closeBtn = document.querySelector(`.close_reply_mention_box_btn[post_id='${post_id}']`)
-    //         const replyMentionBox = document.querySelector(`.reply_mention_box[post_id='${post_id}']`)
+            const commentBox = e.target.closest(".comment_box");
+            const parent_id = commentBox.querySelector(".name").getAttribute("comment_id")
+            const name = commentBox.querySelector(".name").innerText
+            const comment_form = document.querySelector(`.comment_form[post_id='${post_id}']`);
+            const comment_form_input = comment_form.querySelector("#input_comment");
+            const closeBtn = document.querySelector(`.close_reply_mention_box_btn[post_id='${post_id}']`)
+            const replyMentionBox = document.querySelector(`.reply_mention_box[post_id='${post_id}']`)
 
-    //         replyMentionBox.classList.remove("hidden");
-    //         replyMentionBox.querySelector(".reply_to").innerHTML = "Reply to ";
-    //         comment_form_input.focus();
-    //         replyMentionBox.querySelector("input").value = "";
-    //         replyMentionBox.querySelector("input").value = " " + name;
-    //         replyMentionBox.querySelector("input").setAttribute("parent_id", "");
-    //         replyMentionBox.querySelector("input").setAttribute("parent_id", parent_id);
+            replyMentionBox.classList.remove("hidden");
+            replyMentionBox.querySelector(".reply_to").innerHTML = "Reply to ";
+            comment_form_input.focus();
+            replyMentionBox.querySelector("input").value = "";
+            replyMentionBox.querySelector("input").value = " " + name;
+            replyMentionBox.querySelector("input").setAttribute("parent_id", "");
+            replyMentionBox.querySelector("input").setAttribute("parent_id", parent_id);
 
-    //         console.log(parent_id);
+            console.log(parent_id);
 
-    //         closeBtn.addEventListener("click", () => {
-    //             replyMentionBox.classList.add("hidden");
-    //         })
-    //     })
-    // })
+            closeBtn.addEventListener("click", () => {
+                replyMentionBox.classList.add("hidden");
+            })
+        })
+    })
 
 
 
