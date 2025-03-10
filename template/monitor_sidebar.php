@@ -72,6 +72,35 @@
                 </a>
             </li>
 
+            <li>
+                <button type="button" class="flex cursor-pointer w-full items-center gap-1 rounded-lg border border-transparent px-1.5 py-1 text-neutral-600 text-sm leading-[150%] transition-all duration-300 hover:border-neutral-200 hover:bg-neutral-100 data-[active=true]:bg-neutral-100 data-[active=true]:font-extrabold data-[active=true]:text-primary-neutral" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                    </svg>
+
+
+                    <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Account</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                    </svg>
+
+                </button>
+                <ul id="dropdown-example" class="hidden py-2 space-y-2">
+                    <li>
+                        <a href="./monitor_profile.php" class="flex items-center w-full px-2 py-1 text-sm text-neutral-600 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Profile</a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center w-full px-2 py-1 text-sm text-neutral-600 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Yours Posts</a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center w-full px-2 py-1 text-sm text-neutral-600 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Likes</a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center w-full px-2 py-1 text-sm text-neutral-600 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Saves</a>
+                    </li>
+                </ul>
+            </li>
+
         </ul>
     </div>
 </aside>

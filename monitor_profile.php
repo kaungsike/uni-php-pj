@@ -39,8 +39,8 @@ if (!$monitor_data) {
 
         <?php include("./template/monitor_nav.php") ?>
 
-        <main class="relative w-full flex-1 overflow-y-auto scroll-smooth pt-6 pb-20 max-sm:mt-16 sm:pt-8 sm:pb-[7.5rem]">
-            <div class="-mt-8 h-full relative w-full space-y-8 items-center flex flex-col">
+        <main class="relative w-full flex pb-0 overflow-y-auto scroll-smooth pt-6 min-h-screen h-full items-stretch max-sm:mt-16 sm:pt-8">
+            <div class="-mt-8 relative w-full space-y-8 items-center flex flex-col">
                 <div class="relative h-28 w-full sm:h-52">
                     <img alt="Profile Banner" loading="lazy" decoding="async" data-nimg="fill" class="w-full object-cover" src="https://images.unsplash.com/flagged/photo-1593005510329-8a4035a7238f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8eWVsbG93fGVufDB8fDB8fHww" style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;">
                     <!-- <label class="absolute right-6 bottom-4 cursor-pointer rounded-full bg-neutral-black/60 p-1.5 text-neutral-white" data-state="closed">
@@ -51,8 +51,8 @@ if (!$monitor_data) {
                         </svg>
                     </label> -->
                 </div>
-                <div class=" absolute xl:top-[105px] flex items-end gap-6 px-10 justify-start xl:w-[1045px] w-full xl:h-[155px]">
-                    <div class="overflow-hidden border-[4px] border-neutral-200 h-full w-[155px] rounded-full">
+                <div class=" absolute xl:top-[55px] top-0 2xl:flex 2xl:items-end 2xl:justify-start xl:flex xl:items-end flex xl:flex-row items-center justify-center flex-col xl:gap-6 px-10 xl:justify-start xl:w-[1045px] w-full xl:h-[155px]">
+                    <div class="overflow-hidden  border-[4px] border-neutral-200 h-full w-[155px] rounded-full">
                         <img src="https://i.pinimg.com/736x/58/7b/57/587b57f888b1cdcc0e895cbdcfde1c1e.jpg" alt="">
                     </div>
                     <div class="flex flex-col">
@@ -60,28 +60,8 @@ if (!$monitor_data) {
                         <p class="text-neutral-500"><?=$monitor_data['student_id'] ?></p>
                     </div>
                 </div>
-                <div class="pb-16 sm:flex pt-[80px] xl:w-[1070px] sm:justify-center mx-auto">
+                <div class="pb-16 border-x w-[95%] h-full border-x-neutral-300 sm:flex pt-[150px] xl:pt-[80px] xl:w-[1070px] sm:justify-center mx-auto">
                     <div class="flex-1 space-y-8 max-sm:px-6 sm:max-w-[1136px] sm:px-8">
-                        <div class="space-y-6">
-                            <h2 class="title-3">Resume</h2>
-                            <div class="grid gap-5 sm:grid-cols-3">
-                                <div class="flex w-full items-center">
-                                    <div class="grid w-full overflow-hidden focus:outline-none">
-                                        <div class="relative w-full cursor-pointer">
-                                            <div class="outline-dashed outline-1 ease-in-out outline-neutral-white flex w-full items-center justify-center gap-2.5 rounded-xl border border-neutral-300 border-dashed p-4 transition-colors duration-300 hover:border-neutral-400" role="presentation" tabindex="0">
-                                                <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="text-neutral-500" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                                                    <polyline points="17 8 12 3 7 8"></polyline>
-                                                    <line x1="12" x2="12" y1="3" y2="15"></line>
-                                                </svg>
-                                                <span class="body-s text-neutral-500">Upload file</span>
-                                            </div>
-                                            <input accept="application/pdf,.pdf" multiple="" tabindex="-1" class="outline-none" type="file" style="display: none;">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         <div class="space-y-6">
                             <div class="flex items-center justify-between">
                                 <h2 class="title-3">Experience</h2>
