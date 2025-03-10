@@ -42,14 +42,14 @@ if (!$monitor_data) {
         <main class="relative w-full flex-1 overflow-y-auto scroll-smooth pt-6 pb-20 max-sm:mt-16 sm:pt-8 sm:pb-[7.5rem]">
             <div class="-mt-8 h-full relative w-full space-y-8 items-center flex flex-col">
                 <div class="relative h-28 w-full sm:h-52">
-                    <img alt="Profile Banner" loading="lazy" decoding="async" data-nimg="fill" class="w-full object-cover" src="https://www.hackquest.io/images/profile/default-background.png" style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;">
-                    <label class="absolute right-6 bottom-4 cursor-pointer rounded-full bg-neutral-black/60 p-1.5 text-neutral-white" data-state="closed">
+                    <img alt="Profile Banner" loading="lazy" decoding="async" data-nimg="fill" class="w-full object-cover" src="https://images.unsplash.com/flagged/photo-1593005510329-8a4035a7238f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8eWVsbG93fGVufDB8fDB8fHww" style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;">
+                    <!-- <label class="absolute right-6 bottom-4 cursor-pointer rounded-full bg-neutral-black/60 p-1.5 text-neutral-white" data-state="closed">
                         <input accept="image/*" class="hidden" type="file">
                         <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="size-4 sm:size-[1.125rem]" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
                             <path d="M12 20h9"></path>
                             <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
                         </svg>
-                    </label>
+                    </label> -->
                 </div>
                 <div class=" absolute xl:top-[105px] flex items-end gap-6 px-10 justify-start xl:w-[1045px] w-full xl:h-[155px]">
                     <div class="overflow-hidden border-[4px] border-neutral-200 h-full w-[155px] rounded-full">

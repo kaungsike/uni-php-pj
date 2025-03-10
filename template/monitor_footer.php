@@ -13,11 +13,11 @@ function openImageModal(imageSrc) {
     document.getElementById('imageModal').classList.remove('hidden');
 }
 
-document.getElementById('closeModal').addEventListener('click', function () {
-    document.getElementById('imageModal').classList.add('hidden');
+document.getElementById('closeModal') && document.getElementById('closeModal').addEventListener('click', function () {
+    document.getElementById("imageModal") && document.getElementById('imageModal').classList.add('hidden');
 });
 
-document.getElementById('imageModal').addEventListener('click', function (event) {
+document.getElementById('imageModal') && document.getElementById('imageModal').addEventListener('click', function (event) {
     if (event.target === this) {
         this.classList.add('hidden');
     }

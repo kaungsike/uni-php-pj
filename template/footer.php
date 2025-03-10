@@ -6,7 +6,7 @@
   const modal = document.getElementById("modal");
   const blurElements = document.querySelectorAll(".blur-me");
 
-  openModalButton.addEventListener("click", () => {
+  openModalButton && openModalButton.addEventListener("click", () => {
     modal.classList.remove("hidden");
 
     blurElements.forEach((el) => {
@@ -14,7 +14,7 @@
     });
   });
 
-  closeModalButton.addEventListener("click", () => {
+  closeModalButton && closeModalButton.addEventListener("click", () => {
     modal.classList.add("hidden");
 
     blurElements.forEach((el) => {

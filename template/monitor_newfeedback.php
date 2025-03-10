@@ -27,7 +27,7 @@
             </div>
 
             <div class="post_images_container rounded-lg w-full h-[175px] flex items-center p-1 overflow-x-scroll border border-neutral-300">
-                <div class="first:flex h-full w-full hidden items-center justify-evenly">
+                <div class="there_is_no_image first:flex h-full w-full hidden items-center justify-evenly">
                     <p>There is no image.</p>
                 </div>
                 <div>
