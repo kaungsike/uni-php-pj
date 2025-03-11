@@ -913,10 +913,6 @@ input[type="range"]::-ms-fill-lower {
   pointer-events: none;
 }
 
-.static {
-  position: static;
-}
-
 .fixed {
   position: fixed;
 }
@@ -2920,14 +2916,6 @@ input[type="range"]::-ms-fill-lower {
     margin-top: 0.75rem;
   }
 
-  .xl\:mt-\[\] {
-    margin-top: ;
-  }
-
-  .xl\:mt-\[32\] {
-    margin-top: 32;
-  }
-
   .xl\:mt-\[32px\] {
     margin-top: 32px;
   }
@@ -2938,10 +2926,6 @@ input[type="range"]::-ms-fill-lower {
 
   .xl\:h-\[155px\] {
     height: 155px;
-  }
-
-  .xl\:h-\[\] {
-    height: ;
   }
 
   .xl\:w-12 {
@@ -2978,22 +2962,6 @@ input[type="range"]::-ms-fill-lower {
 
   .xl\:w-\[900px\] {
     width: 900px;
-  }
-
-  .xl\:w-\[45px\] {
-    width: 45px;
-  }
-
-  .xl\:w-\[845px\] {
-    width: 845px;
-  }
-
-  .xl\:w-\[945px\] {
-    width: 945px;
-  }
-
-  .xl\:w-\[920px\] {
-    width: 920px;
   }
 
   .xl\:w-\[940px\] {
@@ -3034,20 +3002,16 @@ input[type="range"]::-ms-fill-lower {
     padding-left: 70px;
   }
 
+  .xl\:pt-\[100px\] {
+    padding-top: 100px;
+  }
+
   .xl\:pt-\[200px\] {
     padding-top: 200px;
   }
 
   .xl\:pt-\[80px\] {
     padding-top: 80px;
-  }
-
-  .xl\:pt-\[\] {
-    padding-top: ;
-  }
-
-  .xl\:pt-\[100px\] {
-    padding-top: 100px;
   }
 }
 
