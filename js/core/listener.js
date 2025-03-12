@@ -1,5 +1,5 @@
 // import toastify from "toastify-js.";
-import { approve_btn, closeModal_btn, comment_btn, comment_reply_btn, dropzone_file, monitor_new_feedback_form, more_image_btn, refuse_btn, signin_form, student_new_feedback_form, view_reply_btn } from "./selectors.js";
+import { approve_btn, closeModal_btn, comment_btn, comment_reply_btn, default_profiles_images, dropzone_file, edit_profile_form, input_new_profile, monitor_new_feedback_form, more_image_btn, refuse_btn, signin_form, student_new_feedback_form, view_reply_btn } from "./selectors.js";
 
 const listener = () => {
     approve_btn.forEach((btn) => {
@@ -151,15 +151,13 @@ const listener = () => {
                 signin_form.reset();
                 button.textContent = "Sign In";
                 button.disabled = false;
-                
+
             }
         });
 
         signin_form.reset();
 
     }
-
-
 
     monitor_new_feedback_form && monitor_new_feedback_form.addEventListener("submit", async (e) => {
         e.preventDefault();
@@ -259,7 +257,6 @@ const listener = () => {
         monitor_new_feedback_form.reset();
     });
 
-
     student_new_feedback_form && student_new_feedback_form.addEventListener("submit", async (e) => {
         e.preventDefault();
         console.log("submit");
@@ -354,7 +351,6 @@ const listener = () => {
         student_new_feedback_form.reset();
     });
 
-
     comment_btn && comment_btn.forEach((btn) => {
 
         btn.addEventListener("click", (e) => {
@@ -439,8 +435,6 @@ const listener = () => {
         const files = Array.from(e.target.files);
         const container = document.querySelector(".post_images_container");
 
-        console.log(container);
-
         if (files.length > 0) {
             files.forEach(file => {
                 const reader = new FileReader();
@@ -481,8 +475,135 @@ const listener = () => {
         }
     });
 
+    default_profiles_images && default_profiles_images.forEach((image) => {
+        image.addEventListener("click", (e) => {
+            const target = e.target;
+            const img = target.querySelector("img");
+            const src = img.src;
+            const profile_image = document.querySelector("#edit_profile_image");
+            const hiddenProfileUrl = document.querySelector("#profile_photo_url");
+            const hiddenInput = document.querySelector("#hidden_profile_base64"); // Add this hidden input in your form
+
+            // Hidden input
+
+            // Set the profile image preview
+            profile_image.src = src;
+
+            console.log("Selected Image URL:", src);
+
+            // Store the selected image URL in the hidden input (instead of the file input)
+            hiddenProfileUrl.value = src;
+            hiddenInput.value = ""; // Clear the base64 value
+        });
+    });
+
+    input_new_profile && input_new_profile.addEventListener("change", (e) => {
+        const files = Array.from(e.target.files);
+        const file = files[0];
+        const reader = new FileReader();
+        const profile_image = document.querySelector("#edit_profile_image");
+        const hiddenProfileUrl = document.querySelector("#profile_photo_url");
+        const hiddenInput = document.querySelector("#hidden_profile_base64"); // Add this hidden input in your form
+
+        reader.onload = function (e) {
+            profile_image.src = e.target.result; // Display the selected image
+            const base64_ = e.target.result;
+
+            console.log("Base64 Image:", base64_);
+
+            hiddenInput.value = base64_; // Store base64 in hidden input instead
+            hiddenProfileUrl.value = ""; // Clear the URL value
+        };
+
+        reader.readAsDataURL(file);
+    });
+
+    edit_profile_form && edit_profile_form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        console.log("Submitting...");
+
+        const button = e.target.querySelector("#edit_profile_btn");
+
+        const close_edit_profile_modal = document.querySelector("#close_edit_profile_modal");
+        button.innerHTML = `Loading...`;
+        button.disabled = true;
+
+        const formData = new FormData(edit_profile_form);
+
+        const profileBase64 = document.querySelector("#hidden_profile_base64").value;
+        if (profileBase64) {
+            formData.append("profile_base64", profileBase64);
+        }
+
+        console.log("FormData before submission:", [...formData.entries()]);
+
+        try {
+            const response = await fetch("./save_edit_profile.php", {
+                method: "POST",
+                body: formData
+            });
+
+            const text = await response.text();
+            console.log("Raw response:", text);
+
+            let data;
+            try {
+                data = JSON.parse(text);
+            } catch (jsonError) {
+                console.log("Failed to parse JSON:", jsonError);
+                console.log("Raw Response (possibly PHP error/warning):", text);
+                button.textContent = "Save Changes";
+                button.disabled = false;
+                return;
+            }
+
+            console.log("PHP Response:", data);
+
+            if (!data.success) {
+                alert("There was an error saving your profile. Please try again.");
+                button.textContent = "Save Changes";
+                button.disabled = false;
+                return;
+            }
+
+            const bio = document.querySelector("#new_bio");
+            console.log(bio);
+            const name = document.querySelector("#name");
+            const profile_image = document.querySelector("#profile_image");
+
+            // Update the bio and name
+            bio.textContent = data.bio; // Use textContent to avoid HTML injection
+            name.textContent = data.name;
+
+            // Set profile image based on base64 or URL
+            if (data.profile_photo_url) {
+                profile_image.src = data.profile_photo_url;
+            }
+            close_edit_profile_modal.click();
+
+            console.log("User name, bio, and profile image updated successfully");
+
+        } catch (error) {
+            console.log("Network error or server issue:", error);
+            alert("An error occurred while submitting the form. Please try again.");
+        }
+
+        button.textContent = "Save Changes";
+        button.disabled = false;
+    });
 
 
-};
 
+
+
+
+
+
+
+
+}
 export default listener;
+
+
+// const close_edit_profile_modal = document.querySelector("#close_edit_profile_modal");
+// close_edit_profile_modal.click();

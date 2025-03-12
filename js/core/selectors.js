@@ -48,3 +48,13 @@ export const more_image_btn = document.querySelectorAll(".more_image_btn");
 // show image in new post form
 
 export const dropzone_file = document.querySelector("#dropzone-file");
+
+
+// edit profile
+export const edit_profile_form = document.querySelector("#edit_profile_form");
+export const open_edit_profile_modal = document.querySelector("#open_edit_profile_modal");
+export const edit_profile_modal = document.querySelector("#edit_profile_modal");
+export const close_edit_profile_modal = document.querySelector("#close_edit_profile_modal");
+
+export const default_profiles_images = document.querySelectorAll(".default_profiles_images");
+export const input_new_profile = document.querySelector("#input_new_profile");

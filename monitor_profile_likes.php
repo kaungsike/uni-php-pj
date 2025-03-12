@@ -41,7 +41,7 @@ if (!$monitor_data) {
 
         <main class="relative w-full flex pb-0 overflow-y-auto scroll-smooth pt-6 min-h-screen h-full items-stretch max-sm:mt-16 sm:pt-8">
             <div class="-mt-8 relative w-full space-y-8 items-center flex flex-col">
-                <div class="relative xl:h-[155px] w-full sm:h-52">
+                <div class="relative h-[120px] xl:h-[155px] w-full sm:h-52">
                     <img alt="Profile Banner" loading="lazy" decoding="async" data-nimg="fill" class="w-full object-cover" src="https://images.unsplash.com/flagged/photo-1593005510329-8a4035a7238f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8eWVsbG93fGVufDB8fDB8fHww" style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;">
                 </div>
                 <div class=" absolute xl:top-[55px] top-0 2xl:flex 2xl:items-end 2xl:justify-start xl:flex xl:items-end flex xl:flex-row items-center justify-center flex-col xl:gap-6 px-10 xl:justify-start xl:w-[940px] w-full xl:h-[155px]">
@@ -49,20 +49,20 @@ if (!$monitor_data) {
                         <img src="https://i.pinimg.com/736x/58/7b/57/587b57f888b1cdcc0e895cbdcfde1c1e.jpg" alt="">
                     </div>
                     <div class="flex flex-col">
-                        <p class="text-4xl font-bold"><?= $monitor_data['name'] ?></p>
+                        <p class="xl:text-4xl text-2xl font-bold"><?= $monitor_data['name'] ?></p>
                         <p class="text-neutral-500"><?= $monitor_data['student_id'] ?></p>
                     </div>
                 </div>
-                <div class="p-5 mb-4 xl:mt-[32px] xl:pt-[100px] mx-auto border-y-0 min-h-screen border xl:w-[900px]">
+                <div class="p-5 mb-4 xl:mt-[32px] pt-[110px] xl:pt-[100px] mx-auto border-y-0 min-h-screen border xl:w-[900px]">
                     <hr class="mb-5">
                     <ol class="mt-3 divide-y divide-gray-200 dark:divide-gray-700">
                         <?php
                         $sql = "SELECT posts.*, users.name AS user_name, users.profile_photo AS user_profile_photo 
-        FROM posts 
-        INNER JOIN users ON posts.user_id = users.id 
-        INNER JOIN likes ON posts.id = likes.post_id 
-        WHERE posts.status = 'approved' 
-        AND likes.user_id = $monitor_id ORDER BY posts.created_at DESC";
+                        FROM posts 
+                        INNER JOIN users ON posts.user_id = users.id 
+                        INNER JOIN likes ON posts.id = likes.post_id 
+                        WHERE posts.status = 'approved' 
+                        AND likes.user_id = $monitor_id ORDER BY posts.created_at DESC";
 
                         $query = mysqli_query($con, $sql);
 
