@@ -24,8 +24,12 @@
 
                 <div class="mx-auto xl:w-[880px] border border-neutral-300 rounded-lg p-4">
                     <ol id="post_group" class="mt-3 divide-y divide-gray-200 dark:divide-gray-700">
+                        <div class="w-full hidden flex-col items-center justify-center last:flex">
+                            <img class="h-[200px]" src="./nodata.svg" alt="">
+                            <p class="test-sm mt-5">There is no pending post yet</p>
+                        </div>
                         <?php while ($pending_post = mysqli_fetch_assoc($pending_post_query)) : ?>
-                            <li>
+                            <li class="post_container" post_id='<?= $pending_post['id'] ?>'>
                                 <div class="mb-7 border-b border-b-neutral-300">
                                     <div class="items-center rounded-lg block p-3 sm:flex hover:bg-gray-100 dark:hover:bg-gray-700">
                                         <?php
@@ -54,10 +58,10 @@
                                                 <p class="text-sm text-neutral-500">12hrs ago</p>
                                             </div>
                                             <div class="flex items-center gap-3">
-                                                <button id="refuse_btn" post_id='<?= $pending_post['id'] ?>' class="flex items-center gap-2 justify-center font-bold transition active:scale-95 focus:outline-none disabled:cursor-not-allowed px-4 py-3 text-sm border bg-neutral-50 border-neutral-600 hover:bg-neutral-200 disabled:border-neutral-300 disabled:text-neutral-400 h-8 rounded-md sm:h-9 sm:rounded-lg text-red-500">
+                                                <button id="refuse_btn" post_id='<?= $pending_post['id'] ?>' class="flex w-[90px] items-center gap-2 justify-center font-bold transition active:scale-95 focus:outline-none disabled:cursor-not-allowed px-4 py-3 text-sm border bg-neutral-50 border-neutral-600 hover:bg-neutral-200 disabled:border-neutral-300 disabled:text-neutral-400 h-8 rounded-md sm:h-9 sm:rounded-lg text-red-500">
                                                     Refuse
                                                 </button>
-                                                <button id="approve_btn" post_id='<?= $pending_post['id'] ?>' class="flex items-center gap-2 justify-center font-bold transition active:scale-95 focus:outline-none disabled:cursor-not-allowed px-4 py-3 text-sm border bg-neutral-50 text-green-700 border-neutral-600 hover:bg-neutral-200 disabled:border-neutral-300 disabled:text-neutral-400 h-8 rounded-md sm:h-9 sm:rounded-lg">
+                                                <button id="approve_btn" post_id='<?= $pending_post['id'] ?>' class="flex w-[90px] items-center gap-2 justify-center font-bold transition active:scale-95 focus:outline-none disabled:cursor-not-allowed px-4 py-3 text-sm border bg-neutral-50 text-green-700 border-neutral-600 hover:bg-neutral-200 disabled:border-neutral-300 disabled:text-neutral-400 h-8 rounded-md sm:h-9 sm:rounded-lg">
                                                     Approve
                                                 </button>
                                             </div>

@@ -29,8 +29,6 @@ if (!$monitor_data) {
 
 ?>
 
-<?php include("./template/monitor_header.php") ?>
-
 <div class=" w-full h-full">
 
     <?php include("./template/monitor_sidebar.php") ?>
@@ -45,8 +43,8 @@ if (!$monitor_data) {
                     <img alt="Profile Banner" loading="lazy" decoding="async" data-nimg="fill" class="w-full object-cover" src="https://images.unsplash.com/flagged/photo-1593005510329-8a4035a7238f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8eWVsbG93fGVufDB8fDB8fHww" style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;">
                 </div>
                 <div class=" absolute xl:top-[55px] top-0 2xl:flex 2xl:items-end 2xl:justify-start xl:flex xl:items-end flex xl:flex-row items-center justify-center flex-col xl:gap-6 px-10 xl:justify-start xl:w-[940px] w-full xl:h-[155px]">
-                    <div class="overflow-hidden border-[4px] border-neutral-200 h-full w-[155px] flex items-center justify-center bg-white rounded-full">
-                        <img id="profile_image" class="h-full bg-cover" src="<?= $user_data['profile_photo'] ?>" alt="">
+                    <div class="overflow-hidden  border-[4px] border-neutral-200  xl:w-[155px] xl:h-[155px] w-[130px] h-[130px] rounded-full">
+                        <img id="profile_image" class="h-full bg-cover" src="<?= $monitor_data['profile_photo'] ?>" alt="">
                     </div>
                     <div class="flex flex-col">
                         <p id="name" class="xl:text-4xl text-2xl font-bold"><?= $monitor_data['name'] ?></p>
@@ -54,9 +52,9 @@ if (!$monitor_data) {
                     </div>
                 </div>
                 <div class="p-5 mb-4 xl:mt-[32px] pt-[110px] xl:pt-[100px] mx-[5px] w-[95%]  xl:mx-auto border-y-0 flex-grow border xl:w-[900px]">
-                    <div class="flex items-center xl:mb-5 justify-between sm:max-w-[1136px] sm:px-8">
+                    <div class="flex items-center mb-5 justify-between sm:max-w-[1136px] sm:px-8">
                         <div class="">
-                            <p>Joined <span><?=$user_data['created_at'] ?></span></p>
+                            <p>Joined <span><?= $user_data['created_at'] ?></span></p>
                         </div>
                         <button id="open_edit_profile_modal" class="inline-flex group active:scale-95 items-center gap-2 relative justify-center whitespace-nowrap font-bold duration-300 focus-visible:outline-none mt-0 h-[46px] px-4 py-3 text-sm rounded-xl border  text-neutral-800 border-neutral-600" type="button" data-color="neutral">
                             <span class="inline-flex items-center gap-2 whitespace-nowrap">
@@ -70,11 +68,11 @@ if (!$monitor_data) {
 
                     </div>
                     <div class="w-full border border-neutral-300 p-6 rounded-lg">
-                    <?php if (empty(trim($user_data['bio']))) { ?>
-    <p class="" id="new_bio">Tell as about your self something</p>
-<?php } else { ?>
-    <p id="new_bio"><?= htmlspecialchars(trim($user_data['bio'])) ?></p>
-<?php } ?>
+                        <?php if (empty(trim($user_data['bio']))) { ?>
+                            <p class="" id="new_bio">Tell as about your self something</p>
+                        <?php } else { ?>
+                            <p id="new_bio"><?= htmlspecialchars(trim($user_data['bio'])) ?></p>
+                        <?php } ?>
 
 
 
@@ -91,4 +89,4 @@ if (!$monitor_data) {
 </div>
 
 
-<?php include("./template/footer.php") ?>
+<?php include("./template/monitor_footer.php") ?>

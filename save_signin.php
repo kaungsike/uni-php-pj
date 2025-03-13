@@ -11,6 +11,7 @@ if (!isset($data['email']) || !isset($data['password'])) {
     echo json_encode(["success" => false, "message" => "Missing email or password."]);
     exit;
 }
+sleep(2);
 
 $email = $data['email'];
 $password = $data['password'];
@@ -63,7 +64,7 @@ $data = json_decode(file_get_contents("php://input"), true);
 
 if (isset($data['email']) && isset($data['password'])) {
 
-    sleep(1);
+    sleep(2);
 
     $email = $data['email'];
     $password = $data['password'];

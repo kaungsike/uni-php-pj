@@ -19,6 +19,8 @@ $profile_base64 = isset($_POST['profile_base64']) ? $_POST['profile_base64'] : n
 
 mysqli_begin_transaction($con);
 
+sleep(2);
+
 try {
 
     // Update the user's name and bio

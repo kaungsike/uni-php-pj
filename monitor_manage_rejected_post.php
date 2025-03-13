@@ -26,8 +26,12 @@
 
                 <div class="mx-auto xl:w-[880px] border border-neutral-300 rounded-lg p-4">
                     <ol class="mt-3 divide-y divide-gray-200 dark:divide-gray-700">
+                    <div class="w-full hidden flex-col items-center justify-center last:flex">
+                            <img class="h-[200px]" src="./nodata.svg" alt="">
+                            <p class="test-sm mt-5">There is no rejected post yet</p>
+                        </div>
                         <?php while ($pending_post = mysqli_fetch_assoc($pending_post_query)) : ?>
-                            <li>
+                            <li class="post_container">
                                 <div class="mb-7 border-b border-b-neutral-300">
                                     <div class="items-center rounded-lg block p-3 sm:flex hover:bg-gray-100 dark:hover:bg-gray-700">
                                         <?php

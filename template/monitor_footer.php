@@ -4,6 +4,8 @@
 <script type="module" src="./main.js"></script>
 <script src="https://unpkg.com/@material-tailwind/html@latest"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
+<!-- preline -->
+<script src="https://cdn.jsdelivr.net/npm/preline@latest/dist/preline.min.js"></script>
 
 
 <script>

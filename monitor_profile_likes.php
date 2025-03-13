@@ -45,8 +45,8 @@ if (!$monitor_data) {
                     <img alt="Profile Banner" loading="lazy" decoding="async" data-nimg="fill" class="w-full object-cover" src="https://images.unsplash.com/flagged/photo-1593005510329-8a4035a7238f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8eWVsbG93fGVufDB8fDB8fHww" style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;">
                 </div>
                 <div class=" absolute xl:top-[55px] top-0 2xl:flex 2xl:items-end 2xl:justify-start xl:flex xl:items-end flex xl:flex-row items-center justify-center flex-col xl:gap-6 px-10 xl:justify-start xl:w-[940px] w-full xl:h-[155px]">
-                    <div class="overflow-hidden  border-[4px] border-neutral-200 h-full w-[155px] rounded-full">
-                        <img src="https://i.pinimg.com/736x/58/7b/57/587b57f888b1cdcc0e895cbdcfde1c1e.jpg" alt="">
+                <div class="overflow-hidden  border-[4px] border-neutral-200  xl:w-[155px] xl:h-[155px] w-[130px] h-[130px] rounded-full">
+                        <img id="profile_image" class="h-full bg-cover" src="<?= $monitor_data['profile_photo'] ?>" alt="">
                     </div>
                     <div class="flex flex-col">
                         <p class="xl:text-4xl text-2xl font-bold"><?= $monitor_data['name'] ?></p>
@@ -409,4 +409,4 @@ if (!$monitor_data) {
 </div>
 
 
-<?php include("./template/footer.php") ?>
+<?php include("./template/monitor_footer.php") ?>

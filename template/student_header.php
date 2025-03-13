@@ -18,3 +18,5 @@
 
 <?php include("./student_data.php"); ?>
 
+<?php include("./template/student_newfeedback.php"); ?>
+
