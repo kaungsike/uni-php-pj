@@ -1,7 +1,7 @@
 <?php
 session_start();
-session_unset(); // Unset all session variables
-session_destroy(); // Destroy the session
-header("Location: signin.php"); // Redirect to sign-in page
+session_unset(); 
+session_destroy(); 
+header("Location: signin.php"); 
 exit;
 ?>

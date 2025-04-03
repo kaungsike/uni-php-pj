@@ -560,7 +560,7 @@ const listener = () => {
             const profile_image = document.querySelector("#profile_image");
 
             // Update the bio and name
-            bio.textContent = data.bio; // Use textContent to avoid HTML injection
+            bio.textContent = data.bio; 
             name.textContent = data.name;
 
             // Set profile image based on base64 or URL

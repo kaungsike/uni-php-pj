@@ -95,6 +95,8 @@ const handleStudent = () => {
             const parent_id = replyTo.getAttribute("parent_id");
 
             const comment_group = document.querySelector(`.comment_group[post_id="${post_id}"]`);
+            const total_comment = document.querySelector(`.total_comments[post_id="${post_id}"]`);
+
 
             console.log(comment_group);
 
@@ -139,6 +141,9 @@ const handleStudent = () => {
 
 
                     if (parent_id) {
+
+                        const view_reply_btn = document.querySelector(`button.view_reply_btn[post_id="${post_id}"][parent_id="${parent_id}"]`);
+                        view_reply_btn && view_reply_btn.click();
 
                         const close_reply_mention_box_btn = document.querySelector(`.close_reply_mention_box_btn[post_id='${post_id}']`);
                         close_reply_mention_box_btn.click();
@@ -192,6 +197,8 @@ const handleStudent = () => {
                     button.textContent = "Error! Try again";
                     button.disabled = false;
                 }
+
+                total_comment.innerText = parseInt(total_comment.textContent) + 1;
 
 
             } catch (error) {
