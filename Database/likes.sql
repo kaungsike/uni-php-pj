@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 07, 2025 at 02:30 PM
+-- Generation Time: Apr 05, 2025 at 01:22 PM
 -- Server version: 8.0.41-0ubuntu0.24.04.1
 -- PHP Version: 8.3.6
 
@@ -44,9 +44,18 @@ INSERT INTO `likes` (`id`, `user_id`, `post_id`, `created_at`) VALUES
 (20, 1, 18, '2025-02-20 22:37:58'),
 (118, 2, 12, '2025-02-21 20:09:53'),
 (120, 2, 9, '2025-02-21 20:35:06'),
-(124, 4, 13, '2025-02-21 21:14:09'),
-(134, 4, 2, '2025-02-23 03:40:59'),
-(136, 4, 10, '2025-02-25 00:02:11');
+(136, 4, 10, '2025-02-25 00:02:11'),
+(147, 4, 12, '2025-03-08 06:15:22'),
+(150, 2, 2, '2025-03-08 07:36:37'),
+(159, 4, 103, '2025-03-10 03:30:39'),
+(160, 4, 105, '2025-03-10 11:23:25'),
+(161, 4, 2, '2025-03-10 11:23:32'),
+(162, 4, 110, '2025-03-13 05:44:25'),
+(166, 2, 112, '2025-03-14 11:18:39'),
+(167, 4, 18, '2025-03-14 11:25:30'),
+(168, 2, 113, '2025-03-16 08:04:54'),
+(169, 2, 114, '2025-03-17 03:33:49'),
+(170, 2, 10, '2025-04-05 04:44:19');
 
 --
 -- Indexes for dumped tables
@@ -68,7 +77,7 @@ ALTER TABLE `likes`
 -- AUTO_INCREMENT for table `likes`
 --
 ALTER TABLE `likes`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=147;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=171;
 
 --
 -- Constraints for dumped tables
