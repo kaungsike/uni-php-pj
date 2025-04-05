@@ -1,12 +1,10 @@
 <?php
 include("./__sql_connection.php");
-include("./monitor_data.php");
 include("./student_data.php");
 
 header('Content-Type: application/json');
 
-// $monitor_id = $monitor_data['id'];
-// $student_id = $student_data['id'];
+$student_id = $student_data['id'];
 
 if (!isset($_POST['name']) || !isset($_POST['user_id'])) {
     echo json_encode(["success" => false, "message" => "Missing required data"]);

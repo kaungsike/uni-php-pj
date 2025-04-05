@@ -6,9 +6,9 @@ $monitor_id = $_SESSION['monitor_id'];
 
 if(!$monitor_id){
     echo "<script>
-    alert('Time out');
-    location.href = './clean_session.php';
-</script>";
+            alert('Time out');
+            location.href = './clean_session.php';
+          </script>";
     exit();
 }
 

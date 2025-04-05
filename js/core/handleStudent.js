@@ -1,4 +1,5 @@
 import { student_comment_form, student_like_btn } from "./selectors.js";
+import showToast from "./toaste.js";
 
 const handleStudent = () => {
 
@@ -111,10 +112,10 @@ const handleStudent = () => {
 
             input.value = "";
 
-            button.innerHTML = `<div class="animate-spin inline-block w-4 h-4 border-4 border-yellow-400 border-t-transparent rounded-full" role="status" aria-label="loading">
-        <span class="sr-only">Loading...</span>
-    </div>`;
 
+            button.innerHTML = `<div class="inline-block h-4 w-4 animate-spin rounded-full border-4 border-solid border-current border-e-transparent align-[-0.125em] text-surface motion-reduce:animate-[spin_1.5s_linear_infinite] dark:text-white" role="status">
+                            <span class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
+                        </div>`;
             button.disabled = true;
 
 
@@ -138,6 +139,12 @@ const handleStudent = () => {
                                                 <path d="M10 14L13 21L20 4L3 11L6.5 12.5" stroke="#525252" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
                                                 </g>
                                               </svg>`;
+
+                    const icon = ` <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                              <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
+                                          </svg>`
+
+                    showToast("Commented successfully", "success", icon);
 
 
                     if (parent_id) {
@@ -198,7 +205,8 @@ const handleStudent = () => {
                     button.disabled = false;
                 }
 
-                total_comment.innerText = parseInt(total_comment.textContent) + 1;
+                const currentCount = parseInt(total_comment?.textContent) || 0;
+                total_comment.innerText = currentCount + 1;
 
 
             } catch (error) {
@@ -210,7 +218,7 @@ const handleStudent = () => {
         })
     })
 
-    
+
 }
 
 export default handleStudent;

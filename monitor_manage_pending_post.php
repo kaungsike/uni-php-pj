@@ -8,7 +8,7 @@
 
         <?php include("./template/monitor_nav.php") ?>
 
-        <main class="w-full min-h-screen flex-1 overflow-y-auto scroll-smooth max-sm:mt-16 pt-0">
+        <main id="app" class="w-full min-h-screen flex flex-col items-center overflow-y-auto scroll-smooth max-sm:mt-16 pt-0">
 
             <div class="w-full">
                 <div class="flex mx-auto items-center xl:w-[880px] mb-10 mt-5 rounded-3xl border border-neutral-200 bg-neutral-100 p-6 sm:gap-4">

@@ -75,7 +75,7 @@
     ?>
 
     <div class="p-0 xl:p-3 xl:h-[700px] border border-neutral-300 sm:w-full sm:max-w-xl rounded-lg bg-white" style="pointer-events: auto;">
-        <form href="./ok.php" method="post" id="edit_profile_form" class="space-y-4 h-[95%] flex flex-col px-6 pb-1 max-sm:py-4">
+        <form method="post" id="edit_student_profile_form" class="space-y-4 h-[95%] flex flex-col px-6 pb-1 max-sm:py-4">
             <input type="hidden" name="user_id" value="<?= $student_id ?>">
             <div class="flex items-end justify-between space-y-6 text-center px-6 pt-2 pb-4">
                 <h2 id="radix-:r1d:" class="font-bold text-[1.25rem] leading-normal title-3">Edit Profile</h2>

@@ -7,6 +7,7 @@ export const refuse_btn = document.querySelectorAll("#refuse_btn")
 export const signin_btn = document.querySelector("#signin_btn")
 
 export const signin_form = document.querySelector("#signin_form")
+export const signup_form = document.querySelector("#signup_form")
 export const monitor_new_feedback_form = document.querySelector("#monitor_new_feedback_form")
 export const student_new_feedback_form = document.querySelector("#student_new_feedback_form")
 
@@ -52,9 +53,20 @@ export const dropzone_file = document.querySelector("#dropzone-file");
 
 // edit profile
 export const edit_profile_form = document.querySelector("#edit_profile_form");
+export const edit_student_profile_form = document.querySelector("#edit_student_profile_form");
 export const open_edit_profile_modal = document.querySelector("#open_edit_profile_modal");
 export const edit_profile_modal = document.querySelector("#edit_profile_modal");
 export const close_edit_profile_modal = document.querySelector("#close_edit_profile_modal");
 
 export const default_profiles_images = document.querySelectorAll(".default_profiles_images");
 export const input_new_profile = document.querySelector("#input_new_profile");
+
+
+// Edit Student
+export const edit_student_btn = document.querySelectorAll(".edit_student_btn");
+export const cancle_edit_student_btn = document.querySelectorAll(".cancle_edit_student_btn");
+export const save_edit_student_btn = document.querySelectorAll(".save_edit_student_btn");
+
+
+// Delete Student
+export const delete_student_btn = document.querySelectorAll(".delete_student_btn");

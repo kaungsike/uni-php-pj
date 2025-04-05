@@ -1,3 +1,4 @@
+import handleEditStudent from "./core/handleEditStudent.js";
 import handleModal from "./core/handleModal.js";
 import handleMonitor from "./core/handleMonitor.js";
 import handleStudent from "./core/handleStudent.js";
@@ -10,7 +11,7 @@ class App{
         handleModal();
         handleMonitor();
         handleStudent();
-
+        handleEditStudent();
     }
 }
 

@@ -1,28 +1,54 @@
-<?php
-$comment_sql = "SELECT * FROM comments WHERE post_id = $post_id";
-$comment_query = mysqli_query($con, $comment_sql);
-?>
-
-<div post_comment_box_id='<?= $post_id ?>' id="comment_section" class="hidden flex flex-col gap-3 border-t bg-neutral-100 border-t-neutral-300 p-3 pb-5 duration-300">
-    <div>
-        <?php if (mysqli_num_rows($comment_query) == 0) : ?>
-            <div class="w-full h-[40px] flex items-center justify-center">
-                <p>There is no comment yet!</p>
-            </div>
-        <?php else: ?>
-            <?php while ($data = mysqli_fetch_assoc($comment_query)) : ?>
-                <div class="flex items-start gap-2.5">
-                    <img class="w-8 h-8 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-3.jpg" alt="User image">
-                    <div class="flex flex-col w-full max-w-[320px] leading-1.5">
-                        <div class="flex items-center space-x-2 rtl:space-x-reverse">
-                            <span class="text-sm font-semibold text-gray-900 dark:text-white"><?= htmlspecialchars($data['username']) ?></span>
-                            <span class="text-sm font-normal text-gray-500 dark:text-gray-400"><?= htmlspecialchars($data['timestamp']) ?></span>
-                        </div>
-                        <p class="text-sm font-normal py-2 text-gray-900 dark:text-white"><?= htmlspecialchars($data['content']) ?></p>
-                        <span class="text-sm font-normal text-gray-500 dark:text-gray-400">Delivered</span>
-                    </div>
-                </div>
-            <?php endwhile; ?>
-        <?php endif; ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Student Report</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-8">
+  <div class="container mx-auto px-4">
+    <div class="home-banner-title-wrap">
+      <h1 class="text-4xl font-bold mb-4">Let’s start&nbsp;your education career from EduZone</h1>
+      <div class="home-banner-text-wrap mb-6">
+        <p class="text-lg text-gray-700">The EduZone has always focused on being the best. We are dedicated to excellence in teaching, research, and service.</p>
+      </div>
+      <div class="home-banner-button-wrap mb-6">
+        <a href="/courses" class="bg-pink-500 text-white py-2 px-4 rounded-lg mr-4">Explore Courses</a>
+        <a href="/contact" class="bg-white text-pink-500 py-2 px-4 rounded-lg border border-pink-500">Apply Now</a>
+      </div>
+      <div class="home-banner-divider-line my-8 border-t-2 border-gray-300"></div>
+      <div class="banner-counter-wrap flex items-center">
+        <div class="banner-counter-image-wrap flex space-x-4">
+          <div class="banner-image-holder">
+            <img src="https://cdn.prod.website-files.com/63ef1655136f383cf61bb58f/63f2ef0e2d342ca31610ecf5_banner-counter-image-1.jpg" loading="lazy" alt="Portrait" class="w-24 h-24 object-cover rounded-full">
+          </div>
+          <div class="banner-image-holder">
+            <img src="https://cdn.prod.website-files.com/63ef1655136f383cf61bb58f/63f2f48908de4edc53765a43_banner-counter-image-2.jpg" loading="lazy" alt="Portrait" class="w-24 h-24 object-cover rounded-full">
+          </div>
+          <div class="banner-image-holder">
+            <img src="https://cdn.prod.website-files.com/63ef1655136f383cf61bb58f/63f2f492161d8e183af99620_banner-counter-image-3.jpg" loading="lazy" alt="Portrait" class="w-24 h-24 object-cover rounded-full">
+          </div>
+          <div class="banner-image-holder">
+            <img src="https://cdn.prod.website-files.com/63ef1655136f383cf61bb58f/63f2f499e5b3e010ceabb3b1_banner-counter-image-4.jpg" loading="lazy" alt="Portrait" class="w-24 h-24 object-cover rounded-full">
+          </div>
+          <div class="banner-image-holder">
+            <img src="https://cdn.prod.website-files.com/63ef1655136f383cf61bb58f/63f2f4a04ae743384e7b00e5_banner-counter-image-5.jpg" loading="lazy" alt="Portrait" class="w-24 h-24 object-cover rounded-full">
+          </div>
+        </div>
+        <div class="banner-counter-divider mx-6 border-l-2 border-gray-300"></div>
+        <div class="banner-counter-text-wrap">
+          <h2 class="text-3xl font-bold">23,00569</h2>
+          <p class="text-lg text-gray-700">Trusted by 15,000+ Students around the world</p>
+        </div>
+      </div>
+      <div class="banner-award-wrap flex space-x-6 mt-8">
+        <img src="https://cdn.prod.website-files.com/63ef1655136f383cf61bb58f/63f2f3c9e5b3e05ec0aba158_25year-anniversary-badge.svg" loading="lazy" alt="Award" class="w-12 h-12">
+        <img src="https://cdn.prod.website-files.com/63ef1655136f383cf61bb58f/63f2f3e7700f680c07547e66_no1-university-award.svg" loading="lazy" alt="Award" class="w-12 h-12">
+        <img src="https://cdn.prod.website-files.com/63ef1655136f383cf61bb58f/63f2f4012d342ca04b1166bd_top-branding-award.svg" loading="lazy" alt="Award" class="w-12 h-12">
+      </div>
     </div>
-</div>
+  </div>
+  
+</body>
+</html>

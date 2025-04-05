@@ -10,7 +10,7 @@
 
         <!-- pullout the data from sql -->
 
-        <main class="w-full min-h-screen flex-1 overflow-y-auto scroll-smooth max-sm:mt-16 pt-0">
+        <main id="app" class="w-full min-h-screen flex flex-col items-center overflow-y-auto scroll-smooth max-sm:mt-16 pt-0">
 
             <div class="p-5 mb-4 mx-auto border-y-0 min-h-screen border xl:w-[900px]">
                 <time class="text-lg font-semibold text-gray-900 dark:text-white">January 13th, 2022</time>
@@ -215,7 +215,7 @@
                                         <div post_id="<?= $post_id ?>" class="comment_group p-3 pt-5">
                                             <?php if ($comment_count == 0) : ?>
 
-                                                <div class="w-full h-[40px] flex items-center justify-center">
+                                                <div class="w-full last:flex h-[40px] hidden items-center justify-center">
                                                     <p>There is no comment yet!</p>
                                                 </div>
 
@@ -333,7 +333,7 @@
                                                 <div class="w-full min-w-[200px]">
                                                     <input required id="input_comment" name="context" class="w-full bg-transparent bg-white placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow" placeholder="Type here..." />
                                                 </div>
-                                                <button id="form_button" post_id="<?= $post_id ?>" class="monitor_comment_btn rounded-md py-2 px-4 border border-neutral-300 bg-white text-center text-sm text-white transition-all active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" type="submit">
+                                                <button id="form_button" post_id="<?= $post_id ?>" class="monitor_comment_btn rounded-md py-2 px-4 border border-neutral-300 bg-white text-center text-sm transition-all active:shadow-none" type="submit">
                                                     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="size-5 pointer-events-none" stroke="#d4d4d4">
                                                         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                                                         <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>

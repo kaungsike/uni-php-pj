@@ -1,4 +1,4 @@
-<?php include("./template/newfeedback.php") ?>
+<!-- <?php include("./template/newfeedback.php") ?> -->
 
 <script>
   const openModalButton = document.getElementById("openModal");
@@ -37,7 +37,6 @@
 
 <script type="module" src="./main.js"></script>
 
-<!-- preline -->
 <script src="https://cdn.jsdelivr.net/npm/preline@latest/dist/preline.min.js"></script>
 
 

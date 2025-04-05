@@ -1,5 +1,6 @@
 // import toastify from "toastify-js.";
-import { approve_btn, closeModal_btn, comment_btn, comment_reply_btn, default_profiles_images, dropzone_file, edit_profile_form, input_new_profile, monitor_new_feedback_form, more_image_btn, refuse_btn, signin_form, student_new_feedback_form, view_reply_btn } from "./selectors.js";
+import { approve_btn, closeModal_btn, comment_btn, comment_reply_btn, default_profiles_images, dropzone_file, edit_profile_form, edit_student_profile_form, input_new_profile, monitor_new_feedback_form, more_image_btn, refuse_btn, signin_form, signup_form, student_new_feedback_form, view_reply_btn } from "./selectors.js";
+import showToast from "./toaste.js";
 
 const listener = () => {
 
@@ -16,9 +17,12 @@ const listener = () => {
                 return;
             }
 
-            button.innerHTML = ` <div class="animate-spin inline-block w-6 h-6 border-4 border-yellow-400 border-t-transparent rounded-full" role="status" aria-label="loading">
-        <span class="sr-only">Loading...</span>
-    </div>`;
+            button.innerHTML = `<div
+                            class="inline-block h-5 w-5 animate-spin rounded-full border-4 border-solid border-current border-e-transparent align-[-0.125em] text-surface motion-reduce:animate-[spin_1.5s_linear_infinite] dark:text-white"
+                            role="status">
+                            <span
+                                class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
+                        </div>`;
             button.disabled = true;
 
             try {
@@ -36,8 +40,13 @@ const listener = () => {
                     button.textContent = "Approved";
                     button.disabled = true;
                     post_container.remove();
+                    const icon = ` <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
+                </svg>`
+
+                    showToast("Approved successfully", "success", icon);
                 }
-                 else {
+                else {
                     button.textContent = "Error!";
                     button.disabled = false;
                 }
@@ -46,6 +55,9 @@ const listener = () => {
                 button.textContent = "Error! Try again";
                 button.disabled = false;
             }
+
+
+
         });
     });
 
@@ -53,7 +65,7 @@ const listener = () => {
         btn.addEventListener("click", async (e) => {
             const post_id = e.target.getAttribute("post_id");
             const button = e.target;
-            const post_container = document.querySelector('li.post_container[post_id="108"]');
+            const post_container = document.querySelector(`li.post_container[post_id='${post_id}']`);
             console.log(e.target);
 
             if (!post_id) {
@@ -63,9 +75,12 @@ const listener = () => {
 
             console.log("Refusing post_id:", post_id);
 
-            button.innerHTML = `<div class="animate-spin inline-block w-6 h-6 border-4 border-yellow-400 border-t-transparent rounded-full" role="status" aria-label="loading">
-        <span class="sr-only">Loading...</span>
-    </div>`;
+            button.innerHTML = `<div
+                            class="inline-block h-5 w-5 animate-spin rounded-full border-4 border-solid border-current border-e-transparent align-[-0.125em] text-surface motion-reduce:animate-[spin_1.5s_linear_infinite] dark:text-white"
+                            role="status">
+                            <span
+                                class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
+                        </div>`;
             button.disabled = true;
 
             try {
@@ -82,6 +97,11 @@ const listener = () => {
                 if (data.success) {
                     button.textContent = "Refused";
                     post_container.remove();
+                    const icon = ` <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
+                </svg>`
+
+                    showToast("Approved successfully", "success", icon);
                 } else {
                     button.textContent = "Error! Try again";
                     button.disabled = false;
@@ -92,17 +112,23 @@ const listener = () => {
                 button.textContent = "Error! Try again";
                 button.disabled = false;
             }
+
         });
     });
 
     if (signin_form) {
+
         signin_form.addEventListener("submit", async (e) => {
             e.preventDefault();
 
             const button = e.target.querySelector("#signin_btn");
-            button.innerHTML = `<div class="animate-spin inline-block w-6 h-6  border-4 border-yellow-400 border-t-transparent rounded-full" role="status" aria-label="loading">
-                                    <span class="sr-only">Loading...</span>
-                                </div>`;
+
+            button.innerHTML = `<div
+                            class="inline-block h-6 w-6 animate-spin rounded-full border-4 border-solid border-current border-e-transparent align-[-0.125em] text-surface motion-reduce:animate-[spin_1.5s_linear_infinite] dark:text-white"
+                            role="status">
+                            <span
+                                class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
+                        </div>`;
             button.disabled = true;
 
             const formData = new FormData(signin_form);
@@ -154,6 +180,64 @@ const listener = () => {
         signin_form.reset();
 
     }
+
+    if (signup_form) {
+        signup_form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            const button = e.target.querySelector("#signup_btn");
+
+            button.innerHTML = `<div
+                            class="inline-block h-6 w-6 animate-spin rounded-full border-4 border-solid border-current border-e-transparent align-[-0.125em] text-surface motion-reduce:animate-[spin_1.5s_linear_infinite] dark:text-white"
+                            role="status">
+                            <span
+                                class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
+                        </div>`;
+            button.disabled = true;
+
+            const formData = new FormData(signup_form);
+            const name = formData.get("name");
+            const email = formData.get("email");
+            const password = formData.get("password");
+            const year = formData.get("year");
+            const major = formData.get("major");
+            const id = formData.get("id");
+
+            try {
+                const response = await fetch("./save_signup.php", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ name, email, password, year, major, id }),
+                });
+
+                const text = await response.text();
+                try {
+                    const data = JSON.parse(text);
+                    console.log("PHP Response:", data);
+
+                    if (data.success) {
+                        alert("Account created successfully!");
+                        location.href = "./signin.php"; // Redirect to sign-in page
+                    } else {
+                        alert(data.message);
+                    }
+                } catch (jsonError) {
+                    console.error("Invalid JSON Response:", text);
+                    alert("Server error: Response is not valid JSON.");
+                }
+            } catch (error) {
+                console.error("Fetch failed:", error);
+                alert("Network error. Please try again.");
+            }
+
+            signup_form.reset();
+            button.textContent = "Sign Up";
+            button.disabled = false;
+        });
+
+        signup_form.reset();
+    }
+
 
     monitor_new_feedback_form && monitor_new_feedback_form.addEventListener("submit", async (e) => {
         e.preventDefault();
@@ -208,9 +292,13 @@ const listener = () => {
         console.log([...formData.entries()]);
 
         // Update button state
-        button.innerHTML = `<div class="animate-spin inline-block w-6 h-6 border-4 border-yellow-400 border-t-transparent rounded-full" role="status" aria-label="loading">
-                                <span class="sr-only">Loading...</span>
-                            </div>`;
+
+        button.innerHTML = `<div
+        class="inline-block h-5 w-5 animate-spin rounded-full border-4 border-solid border-current border-e-transparent align-[-0.125em] text-surface motion-reduce:animate-[spin_1.5s_linear_infinite] dark:text-white"
+        role="status">
+        <span
+            class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
+    </div>`;
         button.disabled = true;
 
         try {
@@ -230,6 +318,11 @@ const listener = () => {
                 button.textContent = `Posted`;
                 button.disabled = false;
                 closeModal_btn.click();
+                const icon = ` <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
+            </svg>`
+
+                showToast("Approved successfully", "success", icon);
             } else {
                 button.textContent = "Error! Try again";
                 button.disabled = false;
@@ -299,9 +392,13 @@ const listener = () => {
         console.log([...formData.entries()]);
 
         // Update button state
-        button.innerHTML = `<div class="animate-spin inline-block w-6 h-6 border-4 border-yellow-400 border-t-transparent rounded-full" role="status" aria-label="loading">
-                                <span class="sr-only">Loading...</span>
-                            </div>`;
+
+        button.innerHTML = `<div
+        class="inline-block h-5 w-5 animate-spin rounded-full border-4 border-solid border-current border-e-transparent align-[-0.125em] text-surface motion-reduce:animate-[spin_1.5s_linear_infinite] dark:text-white"
+        role="status">
+        <span
+            class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
+    </div>`;
         button.disabled = true;
 
         try {
@@ -509,11 +606,13 @@ const listener = () => {
 
         const close_edit_profile_modal = document.querySelector("#close_edit_profile_modal");
         button.innerHTML = "";
-        button.innerHTML = `
-<div class="animate-spin inline-block w-6 h-6 border-4 border-yellow-400 border-t-transparent rounded-full" role="status" aria-label="loading">
-        <span class="sr-only">Loading...</span>
-    </div>
-`;
+
+        button.innerHTML = `<div
+        class="inline-block h-5 w-5 animate-spin rounded-full border-4 border-solid border-current border-e-transparent align-[-0.125em] text-surface motion-reduce:animate-[spin_1.5s_linear_infinite] dark:text-white"
+        role="status">
+        <span
+            class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
+    </div>`;
         button.disabled = true;
 
         const formData = new FormData(edit_profile_form);
@@ -560,7 +659,7 @@ const listener = () => {
             const profile_image = document.querySelector("#profile_image");
 
             // Update the bio and name
-            bio.textContent = data.bio; 
+            bio.textContent = data.bio;
             name.textContent = data.name;
 
             // Set profile image based on base64 or URL
@@ -576,6 +675,93 @@ const listener = () => {
             alert("An error occurred while submitting the form. Please try again.");
         }
 
+        button.textContent = "Save Changes";
+        button.disabled = false;
+    });
+
+    edit_student_profile_form && edit_student_profile_form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        console.log("Submitting...");
+
+        const button = e.target.querySelector("#edit_profile_btn");
+
+        const close_edit_profile_modal = document.querySelector("#close_edit_profile_modal");
+        button.innerHTML = "";
+
+        button.innerHTML = `<div
+        class="inline-block h-5 w-5 animate-spin rounded-full border-4 border-solid border-current border-e-transparent align-[-0.125em] text-surface motion-reduce:animate-[spin_1.5s_linear_infinite] dark:text-white"
+        role="status">
+        <span
+            class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
+    </div>`;
+        button.disabled = true;
+
+        const formData = new FormData(edit_student_profile_form);
+
+        const profileBase64 = document.querySelector("#hidden_profile_base64").value;
+        if (profileBase64) {
+            formData.append("profile_base64", profileBase64);
+        }
+
+        console.log("FormData before submission:", [...formData.entries()]);
+
+        try {
+            const response = await fetch("./save_edit_student_profile.php", {
+                method: "POST",
+                body: formData
+            });
+
+            const text = await response.text();
+            console.log("Raw response:", text);
+
+            let data;
+            try {
+                data = JSON.parse(text);
+            } catch (jsonError) {
+                console.log("Failed to parse JSON:", jsonError);
+                console.log("Raw Response (possibly PHP error/warning):", text);
+                button.textContent = "Save Changes";
+                button.disabled = false;
+                return;
+            }
+
+            console.log("PHP Response:", data);
+
+            if (!data.success) {
+                alert("There was an error saving your profile. Please try again.");
+                button.textContent = "Save Changes";
+                button.disabled = false;
+                return;
+            }
+
+            const bio = document.querySelector("#new_bio");
+            console.log(bio);
+            const name = document.querySelector("#name");
+            const profile_image = document.querySelector("#profile_image");
+
+            // Update the bio and name
+            bio.textContent = data.bio;
+            name.textContent = data.name;
+
+            // Set profile image based on base64 or URL
+            if (data.profile_photo_url) {
+                profile_image.src = data.profile_photo_url;
+            }
+            close_edit_profile_modal.click();
+
+            console.log("User name, bio, and profile image updated successfully");
+
+        } catch (error) {
+            console.log("Network error or server issue:", error);
+            alert("An error occurred while submitting the form. Please try again.");
+        }
+
+
+        const icon = `<svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
+                        </svg>`
+
+        showToast("Profile updated successfully!", "success", icon)
         button.textContent = "Save Changes";
         button.disabled = false;
     });

@@ -39,7 +39,7 @@ if (!$student_data) {
 
         <?php include("./template/student_nav.php") ?>
 
-        <main class="relative w-full flex pb-0 overflow-y-auto scroll-smooth pt-6 min-h-screen h-full items-stretch max-sm:mt-16 sm:pt-8">
+        <main id="app" class="relative w-full flex flex-col items-center pb-0 overflow-y-auto scroll-smooth pt-6 min-h-screen h-full max-sm:mt-16 sm:pt-8">
             <div class="-mt-8 relative w-full space-y-8 items-center flex flex-col">
                 <div class="relative h-[120px] xl:h-[155px] w-full sm:h-52">
                     <img alt="Profile Banner" loading="lazy" decoding="async" data-nimg="fill" class="w-full object-cover" src="https://images.unsplash.com/flagged/photo-1593005510329-8a4035a7238f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8eWVsbG93fGVufDB8fDB8fHww" style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;">

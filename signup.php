@@ -12,7 +12,7 @@
                     Register
                 </h1>
 
-                <form action="save_signup.php" method="POST" class="space-y-4">
+                <form id="signup_form" action="" method="POST" class="space-y-4">
 
                     <div class="space-y-1 w-full text-left">
                         <div class="flex items-center justify-start gap-2"><label class="peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-neutral-600 text-sm leading-[150%]" for=":rt:-form-item">Name</label></div>
@@ -37,7 +37,7 @@
                                 </select>
                                 <select id="" name="major" class="block w-[40%] px-4 py-2 h-[40px] text-sm bg-white border border-neutral-300 rounded-md">
                                     <option value="CST">SCT</option>
-                                    <option value="CS">SC</option>
+                                    <option value="CS">CS</option>
                                     <option value="CT">CT</option>
 
                                 </select>
@@ -62,7 +62,7 @@
                         </div>
                     </div>
                     <div class="space-y-1 w-full text-left">
-                        <div class="flex items-center justify-start gap-2"><label class="peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-neutral-600 text-sm leading-[150%]" for=":rt:-form-item">Password</label></div>
+                        <div class="flex items-center justify-start gap-2"><label class="peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-neutral-600 text-sm ">Password</label></div>
                         <div
                             class="inline-flex h-10 w-full items-center rounded-md border border-neutral-300 p-2 text-sm transition-all duration-300 focus-within:border-secondary-neutral "
                             aria-invalid="false">
@@ -71,7 +71,7 @@
                         </div>
                     </div>
                     <div class="space-y-1 w-full text-left mb-5">
-                        <div class="flex items-center justify-start gap-2"><label class="peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-neutral-600 text-sm leading-[150%]" for=":rt:-form-item">Confirm Passowrd</label></div>
+                        <div class="flex items-center justify-start gap-2"><label class="peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-neutral-600 text-sm leading-[150%]">Confirm Passowrd</label></div>
                         <div
                             class="inline-flex h-10 w-full items-center rounded-md border border-neutral-300 p-2 text-sm transition-all duration-300 focus-within:border-secondary-neutral "
                             aria-invalid="false">
@@ -79,7 +79,7 @@
                         </div>
                     </div>
 
-                    <button class="w-full py-3 flex mt-5 justify-center bg-neutral-300 rounded-lg">
+                    <button id="signup_btn" type="submit" class="w-full py-3 flex mt-5 justify-center bg-neutral-300 rounded-lg">
                         Sign Up
                     </button>
                 </form>
@@ -120,9 +120,9 @@
 
         passwordInput.addEventListener("input", validatePasswords);
         confirmPasswordInput.addEventListener("input", validatePasswords);
-    }); 
-    </script>
+    });
+</script>
 
 
 
-    <?php include("./template/footer.php") ?>
+<?php include("./template/footer.php") ?>
