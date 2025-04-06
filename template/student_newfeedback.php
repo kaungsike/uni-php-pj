@@ -187,7 +187,7 @@
 
             <div class="bg-neutral-200 h-px w-full mb-3 hidden sm:block"></div>
 
-            <div class="relative overflow-hidden h-[400px]">
+            <div class="relative overflow-hidden h-[400px] xl:h-[500px]">
                 <div class="h-full w-full rounded-lg overflow-scroll">
 
                     <!-- Profile Photo Section -->
@@ -255,7 +255,7 @@
             <div class="bg-neutral-200 h-px w-full mb-3 hidden sm:block"></div>
 
             <!-- Save Button -->
-            <div class="flex  sm:justify-end sm:space-x-2 py-4">
+            <div class="flex  sm:justify-end sm:space-x-2 pt-4">
                 <button type="submit" id="edit_profile_btn" class="px-6 py-2 border border-neutral-300 min-h-[42px] min-w-[146px] text-neutral-800 flex items-center justify-center rounded-lg text-sm font-bold">
                     Save Change
                 </button>

@@ -4,7 +4,7 @@ if ($monitor_id) {
 
 ?>
 
-    <header class="h-16 blur-me border-neutral-300 border-b bg-white px-6 max-sm:fixed z-20 max-sm:inset-x-0 max-sm:top-0 max-sm:w-full sm:px-8 flex item-end">
+    <header class="no-print h-16 blur-me  border-neutral-300 border-b bg-white px-6 max-sm:fixed z-20 max-sm:inset-x-0 max-sm:top-0 max-sm:w-full sm:px-8 flex item-end">
         <button data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar" aria-controls="default-sidebar" type="button" class="inline-flex bg-white items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 z-0">
             <span class="sr-only">Open sidebar</span>
             <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">

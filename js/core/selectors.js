@@ -70,3 +70,9 @@ export const save_edit_student_btn = document.querySelectorAll(".save_edit_stude
 
 // Delete Student
 export const delete_student_btn = document.querySelectorAll(".delete_student_btn");
+
+// edit report
+export const edit_report_btn = document.querySelector("#edit_report_btn");
+export const cancle_edit_report_btn = document.querySelector("#cancle_edit_report_btn");
+
+export const feedback_report_form = document.querySelector("#feedback_report_form");
