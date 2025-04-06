@@ -10,11 +10,11 @@ import {
   edit_profile_form,
   edit_report_btn,
   edit_student_profile_form,
-  feedback_report_form,
   input_new_profile,
   monitor_new_feedback_form,
   more_image_btn,
   refuse_btn,
+  save_report_btn_,
   signin_form,
   signup_form,
   student_new_feedback_form,
@@ -833,7 +833,7 @@ const listener = () => {
 
     const cancle_edit_report_btn = document.querySelector("#cancle_edit_report_btn");
     const print_report_btn = document.querySelector("#print_report_btn");
-    const save_report_btn = document.querySelector("#save_report_btn");
+    const save_report_btn = document.querySelector("#save_report_btn_");
 
     const report_title = document.querySelector("#report_title");
     const report_content = document.querySelector("#report_content");
@@ -868,7 +868,7 @@ const listener = () => {
 
     const edit_report_btn = document.querySelector("#edit_report_btn");
     const print_report_btn = document.querySelector("#print_report_btn");
-    const save_report_btn = document.querySelector("#save_report_btn");
+    const save_report_btn = document.querySelector("#save_report_btn_");
 
     const report_title = document.querySelector("#report_title");
     const report_content = document.querySelector("#report_content");
@@ -898,41 +898,46 @@ const listener = () => {
 
   })
 
-  feedback_report_form && feedback_report_form.addEventListener("submit", async (e) => {
-    e.preventDefault();
+  save_report_btn_ && save_report_btn_.addEventListener("click",  (e) => {
+    const button = e.target;
 
-    const button = e.target.querySelector("button");
-    button.disabled = true;
-    button.textContent = "Sending...";
+    console.log("u click");
 
-    try {
-      const response = await fetch("./save_feedback.php", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          report_id: report_id,
-          feedback: feedback_report_form.querySelector("#feedback").value,
-          comment: feedback_report_form.querySelector("#comment").value,
-        }),
-      });
+    const edit_report_btn = document.querySelector("#edit_report_btn");
+    const print_report_btn = document.querySelector("#print_report_btn");
+    const cancle_edit_report_btn = document.querySelector("#cancle_edit_report_btn");
 
-      const data = await response.json();
+    const report_title = document.querySelector("#report_title");
+    const report_content = document.querySelector("#report_content");
+    const report_date = document.querySelector("#report_date");
 
-      console.log("PHP Response:", data);
-      if (data.status === "success") {
-        feedback_report_form.reset();
-        showToast("Feedback submitted successfully!", "success");
-      } else {
-        showToast("Failed to submit feedback. Please try again.", "error");
-      }
-    } catch (error) {
-      console.log("Network error or server issue:", error);
-      showToast("An error occurred while submitting the form. Please try again.", "error");
-    } finally {
-      button.disabled = false;
-      button.textContent = "Send Feedback";
-    }
-  });
+    const report_title_input = document.querySelector("#report_title_input");
+    const report_content_input = document.querySelector("#report_content_input");
+    const report_date_input = document.querySelector("#report_date_input");
+
+
+    console.log(report_title);
+    console.log(report_content);
+
+    report_title.innerText = report_title_input.value;
+    report_content.innerText = report_content_input.value;
+    report_date.innerText = report_date_input.value;
+
+    report_title.classList.remove("hidden");
+    report_content.classList.remove("hidden");
+    report_date.classList.remove("hidden");
+    report_title_input.classList.add("hidden");
+    report_content_input.classList.add("hidden");
+    report_date_input.classList.add("hidden");
+    // report_title_input.focus();
+
+    button.classList.add("hidden");
+    cancle_edit_report_btn.classList.add("hidden");
+
+    print_report_btn.classList.remove("hidden");
+    edit_report_btn.classList.remove("hidden");
+  })
+
 
 };
 export default listener;

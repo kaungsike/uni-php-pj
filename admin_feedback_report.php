@@ -14,7 +14,7 @@
 
             <div class=" xl:ml-[255px]">
 
-                <form id="feedback_report_form" action="">
+
                     <div id="feedback-report" class="max-w-4xl mt-7 mx-auto relative bg-white border border-gray-300 p-8 rounded-lg shadow-lg print:shadow-none print:rounded-none print:p-0 print:border-none">
 
                         <!-- University Header -->
@@ -96,21 +96,19 @@
                     </div>
 
                     <div class="text-center mt-8 no-print mb-10">
-                        <button id="edit_report_btn" class="px-6 py-2 border border-gray-300 rounded-md ">
+                        <button type="button" id="edit_report_btn" class="px-6 py-2 border border-gray-300 rounded-md ">
                             Edit Report
                         </button>
-                        <button id="cancle_edit_report_btn" class=" hidden px-6 py-2 border border-gray-300 rounded-md ">
+                        <button type="button" id="cancle_edit_report_btn" class=" hidden px-6 py-2 border border-gray-300 rounded-md ">
                             Cancel
                         </button>
-                        <button id="print_report_btn" onclick="window.print()" class="bg-gray-900 text-white px-6 py-2 rounded-md">
+                        <button type="button" id="print_report_btn" onclick="window.print()" class="bg-gray-900 text-white px-6 py-2 rounded-md">
                             Print Report
                         </button>
-                        <button id="save_report_btn" class="bg-green-600 text-white hidden  px-6 py-2 border border-gray-300 rounded-md ">
+                        <button type="button" id="save_report_btn_" class="bg-green-600 text-white hidden  px-6 py-2 border border-gray-300 rounded-md ">
                             Save
                         </button>
                     </div>
-                </form>
-
             </div>
 
         </main>
