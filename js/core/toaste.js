@@ -2,7 +2,7 @@ const showToast = (message, type = "info",icon) => {
     const app = document.querySelector("#app") || document.body;
 
     const toast = document.createElement("div");
-    toast.className = " fixed mx-auto bg-transparent rounded fixed top-3 flex items-center justify-center max-w-xs p-4 text-gray-500 rounded-lg shadow-lg  transition-opacity duration-300 z-50"
+    toast.className = " fixed mx-auto border-none bg-transparent rounded fixed top-3 flex items-center justify-center max-w-xs p-4 text-gray-500 rounded-lg shadow-lg  transition-opacity duration-300 z-50"
     toast.role = "alert";
 
     const iconColor = type === "success" ? "text-green-500 bg-green-100 dark:bg-green-800 dark:text-green-200" :
