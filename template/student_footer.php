@@ -1,4 +1,3 @@
-<?php include("./template/student_newfeedback.php") ?>
 
 </body>
 <script type="module" src="./main.js"></script>

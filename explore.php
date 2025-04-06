@@ -23,16 +23,16 @@
                     ?>
                         <li>
                             <div class="mb-7 border-b border-b-neutral-300">
-                                <div class="items-center block p-3 sm:flex hover:bg-gray-100 dark:hover:bg-gray-700">
+                                <div class="items-center gap-2 xl:p-3 p-0 flex sm:flex hover:bg-gray-100 dark:hover:bg-gray-700 mb-2">
                                     <?php
 
                                     if ($data['is_anonymous'] == "1") {
                                     ?>
-                                        <img class="w-12 border-0.5 border-neutral-300 h-12 mb-3 me-3 rounded-full sm:mb-0" src="https://cdn.vectorstock.com/i/500p/22/45/user-icon-profile-line-isolated-on-white-vector-50642245.jpg" alt="">
+                                        <img class="w-12 border-0.5 border-neutral-300 h-12 m-0 rounded-full " src="https://cdn.vectorstock.com/i/500p/22/45/user-icon-profile-line-isolated-on-white-vector-50642245.jpg" alt="">
                                     <?php
                                     } else {
                                     ?>
-                                        <img class="w-12 border-0.5 border-neutral-300 h-12 mb-3 me-3 rounded-full sm:mb-0" src="<?= $data['student_profile_photo'] ?>" alt="">
+                                        <img class="w-12 border-0.5 border-neutral-300 h-12 m-0 rounded-full" src="<?= $data['student_profile_photo'] ?>" alt="">
 
                                     <?php
                                     }

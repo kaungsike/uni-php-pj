@@ -1,4 +1,8 @@
-<!-- <?php include("./template/newfeedback.php") ?> -->
+
+
+
+
+</body>
 
 <script>
   const openModalButton = document.getElementById("openModal");
@@ -33,12 +37,9 @@
   });
 </script>
 
-</body>
-
 <script type="module" src="./main.js"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/preline@latest/dist/preline.min.js"></script>
-
+<!-- <script src="https://cdn.jsdelivr.net/npm/preline@latest/dist/preline.min.js"></script> -->
 
 <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
 

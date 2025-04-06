@@ -7,7 +7,6 @@
 <!-- preline -->
 <script src="https://cdn.jsdelivr.net/npm/preline@latest/dist/preline.min.js"></script>
 
-
 <script>
     
 function openImageModal(imageSrc) {

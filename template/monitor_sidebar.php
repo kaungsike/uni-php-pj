@@ -1,4 +1,4 @@
-<aside id="default-sidebar" class="blur-me fixed border-r bg-white border-neutral-400 top-0 left-0 z-30 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
+<aside id="default-sidebar" class="blur-me fixed border-r bg-white border-neutral-400 top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
     <div class="flex w-full items-center justify-end p-3">
         <button data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar" aria-controls="default-sidebar" type="button" class="justify-center w-[40px] h-[40px] border border-neutral-300 rounded-full inline-flex items-center p text-sm text-gray-500 sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
             <span class="sr-only">Open sidebar</span>
@@ -8,6 +8,7 @@
 
         </button>
     </div>
+
     <div class="blur-me h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
         <ul class="space-y-2 font-medium mb-5">
             <li>
@@ -50,7 +51,7 @@
 
 
                         </span>
-                        <span class="whitespace-nowrap">Approved Posts</span>
+                        <span class="whitespace-nowrap">Approved Feedbacks</span>
                     </div>
                 </a>
             </li>
@@ -71,68 +72,7 @@
             </li>
         </ul>
         <hr>
-        <!-- <ul class="space-y-2 font-medium mb-5">
-            <li>
-                <div class="flex w-full items-center justify-between px-3 pt-4 pb-4">
-                    <a>
-                        <p class="text-xl font-bold">Manage Students</p>
-                    </a>
-                </div>
-            </li>
-            <li>
-                <a href="./admin_student_lists.php">
-                    <div data-active="false" class="flex cursor-pointer items-center gap-1 rounded-lg border border-transparent px-3 py-1 text-neutral-600 text-sm leading-[150%] transition-all duration-300 hover:border-neutral-200 hover:bg-neutral-100" style="padding-left:8px">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5 mr-1">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75 2.25 2.25 0 0 0-.1-.664m-5.8 0A2.251 2.251 0 0 1 13.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25ZM6.75 12h.008v.008H6.75V12Zm0 3h.008v.008H6.75V15Zm0 3h.008v.008H6.75V18Z" />
-                        </svg>
 
-
-                        </span>
-                        <span class="whitespace-nowrap">Student List</span>
-                    </div>
-                </a>
-            </li>
-            <li>
-                <a href="./admin_add_new_student.php">
-                    <div data-active="false" class="flex cursor-pointer items-center gap-1 rounded-lg border border-transparent px-3 py-1 text-neutral-600 text-sm  transition-all duration-300 hover:border-neutral-200 hover:bg-neutral-100 " style="padding-left:8px">
-                        <span class="relative h-6 w-6 flex-shrink-0 flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                            </svg>
-                        </span>
-                        <span class="whitespace-nowrap">Add New Student</span>
-                    </div>
-                </a>
-            </li>
-            <li>
-                <a href="./admin_edit_student.php">
-                    <div data-active="false" class="flex cursor-pointer items-center gap-1 rounded-lg border border-transparent px-3 py-1 text-neutral-600 text-sm leading-[150%] transition-all duration-300 hover:border-neutral-200 hover:bg-neutral-100 data-[active=true]:bg-neutral-100 data-[active=true]:font-extrabold data-[active=true]:text-primary-neutral" style="padding-left:8px">
-                        <span class="relative h-6 w-6 flex-shrink-0 flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
-                            </svg>
-
-
-
-
-                        </span>
-                        <span class="whitespace-nowrap">Edit Student</span>
-                    </div>
-                </a>
-            </li>
-            <li>
-                <a href="./admin_edit_student.php">
-                    <div data-active="false" class="flex cursor-pointer items-center gap-1 rounded-lg border border-transparent px-3 py-1 text-neutral-600 text-sm leading-[150%] transition-all duration-300 hover:border-neutral-200 hover:bg-neutral-100 data-[active=true]:bg-neutral-100 data-[active=true]:font-extrabold data-[active=true]:text-primary-neutral" style="padding-left:8px">
-                        <div
-                            class="inline-block h-6 w-6 animate-spin rounded-full border-4 border-solid border-current border-e-transparent align-[-0.125em] text-surface motion-reduce:animate-[spin_1.5s_linear_infinite] dark:text-white"
-                            role="status">
-                            <span
-                                class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
-                        </div>
-                    </div>
-                </a>
-            </li>
-        </ul> -->
         <hr>
         <ul class="space-y-2 font-medium mt-5">
             <li>
